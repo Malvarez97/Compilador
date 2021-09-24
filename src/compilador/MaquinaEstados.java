@@ -1,6 +1,8 @@
 package compilador;
 
 
+import compilador.Asemanticas.*;
+
 public class MaquinaEstados {
 	private final TransicionEstados[][] maquinaEstados =
 	        new TransicionEstados[Estado.TOTAL_ESTADOS][Input.TOTAL_INPUTS]; //[filas][columnas].
@@ -17,21 +19,21 @@ public class MaquinaEstados {
 
 	        inicMaquinaEstados(cFuente, tablaS, tablaPR);
 	    }
-
+		// Cambiar el orden de la inicializacion
 	    private void inicMaquinaEstados(CodigoFuente cFuente, TablaSimbolos tablaS, TablaPalabrasReserv tablaPR) {
 	        /* Acciones semanticas */
 	        InicStringVacio inicStringVacio = new InicStringVacio();
 	        ConcChar concatenaChar = new ConcChar(cFuente);
 	        TruncId truncaId = new TruncId(aLexico);
-	        RetrocedeCFuente retrocedeFuente = new RetrocedeCFuente(cFuente);
-	        GeneraTokenTS generaTokenId = new GeneraTokenTS(this, tablaS, Parser.ID);
-	        GeneraTokenTS generaTokenCadena = new GeneraTokenTS(this, tablaS, Parser.CADENA);
-	        GeneraTokenPR generaTokenPR = new GeneraTokenPR(this);
+	        Retrocede_Fuente retrocedeFuente = new Retrocede_Fuente(cFuente);
+	        GeneraTs generaTokenId = new GeneraTs(this, tablaS, Parser.ID);
+	        GeneraTs generaTokenCadena = new GeneraTs(this, tablaS, Parser.CADENA);
+	        GeneraPr generaTokenPR = new GeneraPr(this);
 	        ConsumeChar consumeChar = new ConsumeChar();
 	        GeneraTokenUINT generaTokenUINT = new GeneraTokenUINT(this, tablaS, Parser.CTE_UINT);
 	        GeneraTokenDouble generaTokenDouble = new GeneraTokenDouble(this, tablaS, Parser.CTE_DOUBLE);
-	        NotificaError notificaErrorLexico = new NotificaError("Simbolo no reconocido", aLexico, cFuente, true);
-	        GeneraTokenParticular generaTokenEOF = new GeneraTokenParticular(this, AnalizadorLex.T_EOF);
+	        Notificacion notificaErrorLexico = new Notificacion("Simbolo no reconocido", aLexico, cFuente, true);
+	        GeneraTp generar = new GeneraTp(this, AnalizadorLex.T_EOF);
 
 	        /* Estados y transiciones */
 	        inicTransiciones(Estado.INICIAL, Estado.INICIAL,

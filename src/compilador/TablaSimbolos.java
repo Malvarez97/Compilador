@@ -4,7 +4,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import Celda;
+import compilador.Casilla;
 
 public class TablaSimbolos {
 	private final Map<String, Casilla> tablaSimb;

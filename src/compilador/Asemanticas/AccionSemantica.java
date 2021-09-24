@@ -1,4 +1,4 @@
-package compilador;
+package compilador.Asemanticas;
 
 import java.nio.channels.IllegalSelectorException;
 

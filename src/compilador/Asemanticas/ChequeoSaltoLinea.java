@@ -1,4 +1,4 @@
-package compilador;
+package compilador.Asemanticas;
 
 public class ChequeoSaltoLinea {
 
