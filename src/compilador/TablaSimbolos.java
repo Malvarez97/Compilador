@@ -4,7 +4,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import util.tabla_simbolos.Celda;
+import Celda;
 
 public class TablaSimbolos {
 	private final Map<String, Casilla> tablaSimb;
@@ -14,7 +14,7 @@ public class TablaSimbolos {
     	}
 	
 	public String toString() {
-		if (tablaSimb.isEmpty()) return "Tabla de símbolos vacía.";
+		if (tablaSimb.isEmpty()) return "Tabla de sï¿½mbolos vacï¿½a.";
 		StringBuilder builder = new StringBuilder();
 		for (Casilla c : tablaSimb.values())
 			builder.append(c.toString()).append('\n');

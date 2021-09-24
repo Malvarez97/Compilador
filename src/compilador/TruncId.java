@@ -12,7 +12,7 @@ public class TruncId  extends AccionSemantica{
 	public void ejecutar() {
 		if(maxString < tamString()) {
 			truncaString(maxString);
-			Notificacion.agregarWarning(lexico.getLineaActual(), )
+			Notificacion.agregarWarning(lexico.getLineaActual(),null );
 		}
 	}
 }

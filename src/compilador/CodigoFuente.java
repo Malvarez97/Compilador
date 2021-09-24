@@ -30,7 +30,7 @@ public class CodigoFuente {
 	}
 	
 	public char simAnterior() {
-		if (posicion ==0) throw new IllegalStateException ("no se puede leer el simbolo anterior por que te encontras en el inicio")
+		if (posicion ==0) throw new IllegalStateException ("no se puede leer el simbolo anterior por que te encontras en el inicio");
 		return codFuente.charAt(posicion-1);
 	}
 	
