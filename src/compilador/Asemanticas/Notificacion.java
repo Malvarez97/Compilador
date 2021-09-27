@@ -1,5 +1,8 @@
 package compilador.Asemanticas;
 
+import compilador.AnalizadorLex;
+import compilador.CodigoFuente;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +10,10 @@ public  class Notificacion {
 	
 	private static final List<String> errores = new ArrayList<>();
 	private static final List<String> warnings =new ArrayList<>();
-	
-	
+
+	public Notificacion(String simbolo_no_reconocido, AnalizadorLex aLexico, CodigoFuente cFuente, boolean b) {
+	}
+
 
 	public static void addError(int linea, String error) {
 		errores.add("linea "+linea+"->"+error);	

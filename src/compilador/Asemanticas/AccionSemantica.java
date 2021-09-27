@@ -4,7 +4,7 @@ import java.nio.channels.IllegalSelectorException;
 
 public abstract class AccionSemantica {
 	private static StringBuilder sTemporal= new StringBuilder("");
-	private static double base = Double.NEGATIVE_INFINITY; // mirar por que ... 
+	private static double base = Double.parseDouble(null); // mirar por que ...
 	
 	
 	public void inicString() { // vacio el string en caso de que tenga basura, dejandolo vacio 
@@ -42,6 +42,7 @@ public abstract class AccionSemantica {
 	public void setBaseDouble(double valor) {
 		base=valor;
 	}
+	public boolean baseInicializada(){return base!= Double.parseDouble(null);}// revisar
 	
 	public abstract void ejecutar();
 }

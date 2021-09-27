@@ -1,11 +1,11 @@
-package compilador;
+package compilador.MaquinaEstados;
 
 
+import compilador.*;
 import compilador.Asemanticas.*;
 
 public class MaquinaEstados {
-	private final TransicionEstados[][] maquinaEstados =
-	        new TransicionEstados[Estado.TOTAL_ESTADOS][Input.TOTAL_INPUTS]; //[filas][columnas].
+		private final TransicionEstados[][] maquinaEstados = new TransicionEstados[Estado.TOTAL_ESTADOS][Input.TOTAL_INPUTS]; //[filas][columnas].
 	    private final AnalizadorLex aLexico; //Permite agregar tokens a medida que se generan.
 	    private final CuentaSaltoLinea cuentaSaltoLinea = new CuentaSaltoLinea(); //Permite saber la linea actual
 	    private int estadoActual = Estado.INICIAL;
@@ -14,42 +14,42 @@ public class MaquinaEstados {
 	     * Constructor.
 	     */
 	    public MaquinaEstados(AnalizadorLex aLexico, CodigoFuente cFuente, TablaSimbolos tablaS,
-	                          TablaPalabrasReserv tablaPR) {
+							  TablaPalabrasReserv tablaPR) {
 	        this.aLexico = aLexico;
 
 	        inicMaquinaEstados(cFuente, tablaS, tablaPR);
 	    }
-		// Cambiar el orden de la inicializacion
-	    private void inicMaquinaEstados(CodigoFuente cFuente, TablaSimbolos tablaS, TablaPalabrasReserv tablaPR) {
-	        /* Acciones semanticas */
-	        InicStringVacio inicStringVacio = new InicStringVacio();
-	        ConcChar concatenaChar = new ConcChar(cFuente);
-	        TruncId truncaId = new TruncId(aLexico);
-	        Retrocede_Fuente retrocedeFuente = new Retrocede_Fuente(cFuente);
-	        GeneraTs generaTokenId = new GeneraTs(this, tablaS, Parser.ID);
-	        GeneraTs generaTokenCadena = new GeneraTs(this, tablaS, Parser.CADENA);
+	    private void inicMaquinaEstados(CodigoFuente cFuente, TablaSimbolos tablaS, TablaPalabrasReserv tablaPR) { /// Inicializo Acciones semanticas
+
+
+			GeneraULONG generatokenUl= new GeneraULONG (this, tablaS, (short)262 /*Parser.CTE_UINT*/);
+			GeneraDouble generaDouble = new GeneraDouble(this, tablaS, (short)263 /*Parser.CTE_DOUBLE*/);
+			NotError notificaELexico = new NotError("Simbolo no reconocido", aLexico, cFuente, true);
+			GeneraTp generarEOF = new GeneraTp(this, AnalizadorLex.T_EOF);
+			GeneraTs generaTokenId = new GeneraTs(this, tablaS, (short) 257/*Parser.ID*/);
+	        GeneraTs generaTokenCadena = new GeneraTs(this, tablaS,(short)264 /*Parser.CADENA*/);
 	        GeneraPr generaTokenPR = new GeneraPr(this);
-	        ConsumeChar consumeChar = new ConsumeChar();
-	        GeneraTokenUINT generaTokenUINT = new GeneraTokenUINT(this, tablaS, Parser.CTE_UINT);
-	        GeneraTokenDouble generaTokenDouble = new GeneraTokenDouble(this, tablaS, Parser.CTE_DOUBLE);
-	        Notificacion notificaErrorLexico = new Notificacion("Simbolo no reconocido", aLexico, cFuente, true);
-	        GeneraTp generar = new GeneraTp(this, AnalizadorLex.T_EOF);
+	        IgnoraC consumeChar = new IgnoraC();
+			InicStringVacio inicStringVacio = new InicStringVacio();
+			ConcChar concatenaChar = new ConcChar(cFuente);
+			TruncId truncaId = new TruncId(aLexico);
+			Retrocede_Fuente retrocedeFuente = new Retrocede_Fuente(cFuente);
+
 
 	        /* Estados y transiciones */
-	        inicTransiciones(Estado.INICIAL, Estado.INICIAL,
-	            notificaErrorLexico); //Transiciones por defecto para cualquier simbolo no reconocido.
-	        maquinaEstados[Estado.INICIAL][Input.DESCARTABLE] = new TransicionEstados(Estado.INICIAL); //Tab y espacio.
+	        inicTransiciones(Estado.INICIAL, Estado.INICIAL, notificaELexico);
+	        maquinaEstados[Estado.INICIAL][Input.DESCARTABLE] = new TransicionEstados(Estado.INICIAL);
 	        maquinaEstados[Estado.INICIAL][Input.SALTO_LINEA] = new TransicionEstados(Estado.INICIAL,
 	            cuentaSaltoLinea); //Salto de linea.
 	        inicCaminoLiterales(cFuente);
 	        inicCaminoIds(inicStringVacio, concatenaChar, truncaId, generaTokenId, retrocedeFuente);
 	        inicCaminoPRs(inicStringVacio, concatenaChar, generaTokenPR, retrocedeFuente);
-	        inicCaminoComentario(cFuente, retrocedeFuente, notificaErrorLexico);
+	        inicCaminoComentario(cFuente, retrocedeFuente, notificaELexico);
 	        inicCaminoComparadores(cFuente, retrocedeFuente, consumeChar);
-	        inicCaminoCtesNum(inicStringVacio, concatenaChar, retrocedeFuente, generaTokenUINT, consumeChar,
-	            generaTokenDouble);
+	        inicCaminoCtesNum(inicStringVacio, concatenaChar, retrocedeFuente, generatokenUl, consumeChar,
+	            generaDouble);
 	        inicCaminoCadenas(cFuente, inicStringVacio, concatenaChar, generaTokenCadena);
-	        maquinaEstados[Estado.INICIAL][Input.EOF] = new TransicionEstados(Estado.FINAL, generaTokenEOF); //EOF
+	        maquinaEstados[Estado.INICIAL][Input.EOF] = new TransicionEstados(Estado.FINAL, generarEOF);
 
 	    }
 
@@ -80,8 +80,9 @@ public class MaquinaEstados {
 	     *
 	     * @param charInput caracter leido.
 	     */
-	    public void transicionar(char charInput) {
-	        int codigoInput = Input.charToInt(charInput); //Obtiene el codigo asociado al caracter leido.
+	    public void cambiar(char charInput) {
+			// simula las transiciones de estados
+	        int codigoInput = Input.charToInt(charInput);
 
 	        TransicionEstados TransicionEstados = maquinaEstados[estadoActual][codigoInput];
 
@@ -93,7 +94,7 @@ public class MaquinaEstados {
 	    /**
 	     * Solo se ejecuta al alcanzar el EOF del codigo fuente. El funcionamiento es el mismo que transicionar(char).
 	     */
-	    public void transicionarEOF() {
+	    public void cambiarEOF() {
 	        TransicionEstados TransicionEstados = maquinaEstados[estadoActual][Input.EOF];
 
 	        TransicionEstados.ejecutarAccionSemantica();
@@ -113,49 +114,36 @@ public class MaquinaEstados {
 	            maquinaEstados[estadoOrigen][input] = new TransicionEstados(estadoDestino, accionesSemanticas);
 	    }
 
-
-	    /**
-	     * Transiciones asociadas a la deteccion de tokens literales.
-	     */
 	    private void inicCaminoLiterales(CodigoFuente cFuente) {
-	        GeneraTokenLiteral generaTokenLiteral = new GeneraTokenLiteral(this, cFuente);
-	        maquinaEstados[Estado.INICIAL][Input.SUMA] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.GUION] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.MULTIPL] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.DIV] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.LLAVE_A] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.LLAVE_C] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.PARENT_A] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.PARENT_C] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.COMA] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
-	        maquinaEstados[Estado.INICIAL][Input.PUNTO_COMA] = new TransicionEstados(Estado.FINAL, generaTokenLiteral);
+			// inicializo las transiciones asociadas de los identificadores
+	        GeneraTL generaTokenL= new GeneraTL(this, cFuente);
+	        maquinaEstados[Estado.INICIAL][Input.SUMA] = new TransicionEstados(Estado.FINAL, generaTokenL);
+	        maquinaEstados[Estado.INICIAL][Input.GUION] = new TransicionEstados(Estado.FINAL, generaTokenL);
+	        maquinaEstados[Estado.INICIAL][Input.MULTIPL] = new TransicionEstados(Estado.FINAL, generaTokenL);
+	        //maquinaEstados[Estado.INICIAL][Input.DIV] = new TransicionEstados(Estado.FINAL, generaTokenL);
+	        maquinaEstados[Estado.INICIAL][Input.PARENT_A] = new TransicionEstados(Estado.FINAL, generaTokenL);
+	        maquinaEstados[Estado.INICIAL][Input.PARENT_C] = new TransicionEstados(Estado.FINAL, generaTokenL);
+	        maquinaEstados[Estado.INICIAL][Input.COMA] = new TransicionEstados(Estado.FINAL, generaTokenL);
+	        maquinaEstados[Estado.INICIAL][Input.PUNTO_COMA] = new TransicionEstados(Estado.FINAL, generaTokenL);
 	    }
 
-	    /**
-	     * Transiciones asociadas a la deteccion de identificadores.
-	     */
+
 	    private void inicCaminoIds(AccionSemantica inicStringVacio, AccionSemantica concatenaChar, AccionSemantica truncaId,
 	                               AccionSemantica generaTokenId, AccionSemantica retrocedeFuente) {
 	        /* Estado 0 */
-	        maquinaEstados[Estado.INICIAL][Input.D_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, inicStringVacio,
-	            concatenaChar);
-	        maquinaEstados[Estado.INICIAL][Input.U_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, inicStringVacio,
-	            concatenaChar);
-	        maquinaEstados[Estado.INICIAL][Input.I_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, inicStringVacio,
-	            concatenaChar);
-	        maquinaEstados[Estado.INICIAL][Input.LETRA_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, inicStringVacio,
-	            concatenaChar);
+	        maquinaEstados[Estado.INICIAL][Input.U_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, inicStringVacio, concatenaChar);
+	        maquinaEstados[Estado.INICIAL][Input.L_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, inicStringVacio, concatenaChar);
+	        maquinaEstados[Estado.INICIAL][Input.LETRA_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, inicStringVacio, concatenaChar);
 
 	        /* Estado 1 */
-	        //Inputs no reconocidos.
-	        inicTransiciones(Estado.DETECCION_ID, Estado.FINAL, truncaId, generaTokenId, retrocedeFuente);
+
+	        inicTransiciones(Estado.DETECCION_ID, Estado.FINAL, truncaId, generaTokenId, retrocedeFuente); // entrada no reconocidas
 	        //Salto de linea. Cuenta una nueva linea. No devuelve el ultimo leido pq se descartaria de todas formas.
-	        maquinaEstados[Estado.DETECCION_ID][Input.SALTO_LINEA] = new TransicionEstados(Estado.FINAL, truncaId,
-	            generaTokenId, cuentaSaltoLinea);
+	        maquinaEstados[Estado.DETECCION_ID][Input.SALTO_LINEA] = new TransicionEstados(Estado.FINAL, truncaId, generaTokenId, cuentaSaltoLinea);
 	        //Letras minusculas.
 	        maquinaEstados[Estado.DETECCION_ID][Input.D_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, concatenaChar);
 	        maquinaEstados[Estado.DETECCION_ID][Input.U_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, concatenaChar);
-	        maquinaEstados[Estado.DETECCION_ID][Input.I_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, concatenaChar);
+	        maquinaEstados[Estado.DETECCION_ID][Input.L_MINUSC] = new TransicionEstados(Estado.DETECCION_ID, concatenaChar);
 	        maquinaEstados[Estado.DETECCION_ID][Input.LETRA_MINUSC] = new TransicionEstados(Estado.DETECCION_ID,
 	            concatenaChar);
 	        //Guio bajo

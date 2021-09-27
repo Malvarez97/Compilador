@@ -2,27 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e04bfcb4-4100-438b-891d-719aa088eaa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compilador/AlmacenToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraPr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraULONG.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/IgnoraC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/Retrocede_Fuente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraDouble.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/NotError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/NotWarning.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/AccionSemantica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/AccionSemantica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/AristaEstado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/AristaEstado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/ChequeoSaltoLinea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/ChequeoSaltoLinea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Cod_fuente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/ConcChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/ConcChar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/CuentaSaltoLinea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/CuentaSaltoLinea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/InicStringVacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/InicStringVacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/MaquinaEstados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Notificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/Notificacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/TablaSimbolos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/TransicionEstados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/TransicionEstados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/TruncId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/TruncId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/AristaEstado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados/AristaEstado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/AccionSemantica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/AccionSemantica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/CuentaSaltoLinea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/CuentaSaltoLinea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraPr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraPr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraULONG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraULONG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/Notificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/Notificacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/ParseBaseDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/ParseBaseDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Estado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados/Estado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/MaquinaEstados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados/MaquinaEstados.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +35,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1yayejmmRfGOYcGXvOED6rrFYSC" />
   <component name="ProjectLevelVcsManager">
@@ -94,5 +99,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

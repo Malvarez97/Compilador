@@ -1,7 +1,7 @@
 package compilador.Asemanticas;
 
 import compilador.AlmacenToken;
-import compilador.MaquinaEstados;
+import compilador.MaquinaEstados.MaquinaEstados;
 
 public class GeneraTp extends AccionSemantica{
     private MaquinaEstados maquina;

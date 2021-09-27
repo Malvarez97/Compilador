@@ -1,6 +1,6 @@
 package compilador.Asemanticas;
 
-import compilador.MaquinaEstados;
+import compilador.MaquinaEstados.MaquinaEstados;
 import compilador.TablaPalabrasReserv;
 
 public class GeneraPr extends AccionSemantica{

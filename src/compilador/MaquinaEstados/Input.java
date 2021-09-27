@@ -1,12 +1,12 @@
-package compilador;
+package compilador.MaquinaEstados;
 
 public class Input {
-    public static final int DESCARTABLE = 0, SALTO_LINEA = 1, LETRA_MINUSC = 2, D_MINUSC = 3, U_MINUSC = 4, I_MINUSC = 5,
-            LETRA_MAYUS = 6, DIGITO = 7, GUION_B = 8, PORCENTAJE = 9, MENOR = 10, MAYOR = 11, ADMIRACION = 12, IGUAL = 13,
-            SUMA = 14, GUION = 15, MULTIPL = 16, DIV = 17, LLAVE_A = 18, LLAVE_C = 19, PARENT_A = 20, PARENT_C = 21,
-            PUNTO = 22, COMA = 23, PUNTO_COMA = 24, COMILLA = 25, OTRO = 26, EOF = 27;
+    public static int DESCARTABLE = 0, SALTO_LINEA = 1, LETRA_MINUSC = 2, D_MINUSC = 3, U_MINUSC = 4, L_MINUSC = 5,
+            LETRA_MAYUS = 6, DIGITO = 7, GUION_B = 8, PORCENTAJE = 9, MENOR = 10, MAYOR = 11,  E_EXP =12 ,IGUAL = 13,
+            SUMA = 14, GUION = 15, MULTIPL = 16, DIV = 17, PARENT_A = 18, PARENT_C = 19,
+            PUNTO = 20, COMA = 21, PUNTO_COMA = 22, COMILLA = 23, OTRO = 24, EOF = 25;
 
-    public static final int TOTAL_INPUTS = 28;
+    public static int TOTAL_INPUTS = 26;
 
     /**
      * Devuelve el codigo asociado al input recibido.
@@ -25,8 +25,8 @@ public class Input {
                 return D_MINUSC;
             case 'u':
                 return U_MINUSC;
-            case 'i':
-                return I_MINUSC;
+            case 'l':
+                return L_MINUSC;
             case '_':
                 return GUION_B;
             case '%':
@@ -35,8 +35,6 @@ public class Input {
                 return MENOR;
             case '>':
                 return MAYOR;
-            case '!':
-                return ADMIRACION;
             case '=':
                 return IGUAL;
             case '+':
@@ -47,10 +45,6 @@ public class Input {
                 return MULTIPL;
             case '/':
                 return DIV;
-            case '{':
-                return LLAVE_A;
-            case '}':
-                return LLAVE_C;
             case '(':
                 return PARENT_A;
             case ')':
@@ -63,6 +57,8 @@ public class Input {
                 return PUNTO_COMA;
             case '"':
                 return COMILLA;
+            case 'E':
+                return E_EXP;
         }
 
         if (inputChar >= 'a' && inputChar <= 'z') return LETRA_MINUSC;

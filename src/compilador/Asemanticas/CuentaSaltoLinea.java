@@ -1,8 +1,5 @@
 package compilador.Asemanticas;
 
-
-import compilador.Asemanticas.AccionSemantica;
-
 public class CuentaSaltoLinea extends AccionSemantica {
     private int cantLineas = 1;
 

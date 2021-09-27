@@ -1,6 +1,8 @@
 package compilador;
 
 
+import compilador.MaquinaEstados.MaquinaEstados;
+
 public class AnalizadorLex {
 	private final CodigoFuente cod_Fuente;
 	private final MaquinaEstados maquinaEstados;
@@ -30,9 +32,9 @@ public class AnalizadorLex {
 
 	    public int produceToken(){
 	        while (!maquinaEstados.estadoFinalAlcanzado()){
-	            if (cod_Fuente.eof()) maquinaEstados.transicionarEOF();
+	            if (cod_Fuente.eof()) maquinaEstados.cambiarEOF();
 	            else {
-	                maquinaEstados.transicionar(cod_Fuente.simActual());
+	                maquinaEstados.cambiar(cod_Fuente.simActual());
 	                cod_Fuente.adelanta();
 	            }
 	        }

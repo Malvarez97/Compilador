@@ -1,7 +1,6 @@
 package compilador.Asemanticas;
 
-import compilador.MaquinaEstados;
-import compilador.TablaPalabrasReserv;
+import compilador.MaquinaEstados.MaquinaEstados;
 import compilador.TablaSimbolos;
 
 /**
