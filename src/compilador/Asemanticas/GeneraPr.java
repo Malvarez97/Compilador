@@ -9,6 +9,7 @@ public class GeneraPr extends AccionSemantica{
     public GeneraPr(MaquinaEstados maquina){
         this.maquina=maquina;
     }
+
     @Override
     public void ejecutar() {
         String palabra =getString();
