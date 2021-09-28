@@ -2,12 +2,12 @@ package compilador.Asemanticas;
 
 import compilador.AlmacenToken;
 import compilador.MaquinaEstados.MaquinaEstados;
-
-public class GeneraTp extends AccionSemantica{
+// Genera token particular
+public class GeneraTokenParticular extends AccionSemantica{
     private MaquinaEstados maquina;
     private short token ;
 
-   public GeneraTp(MaquinaEstados maquina,short token){
+   public GeneraTokenParticular(MaquinaEstados maquina, short token){
        this.maquina=maquina;
        this.token=token;
    }

@@ -24,7 +24,7 @@ public class NotError extends AccionSemantica{
      }
      else error+=mensaje;
 
-     Notificacion.addError(lexico.getLineaActual(),error);
+     AnalizadorLex.Notificacion.addError(lexico.getLineaActual(),error);
 
     }
 }

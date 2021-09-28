@@ -3,11 +3,11 @@ package compilador.Asemanticas;
 import compilador.CodigoFuente;
 import compilador.MaquinaEstados.MaquinaEstados;
 
-public class GeneraTL extends AccionSemantica{
+public class GeneraTokenLiteral extends AccionSemantica{
     private MaquinaEstados maquina;
     private CodigoFuente cFuente;
 
-    public GeneraTL(MaquinaEstados maquinaEstados, CodigoFuente cFuente) {
+    public GeneraTokenLiteral(MaquinaEstados maquinaEstados, CodigoFuente cFuente) {
         this.maquina = maquinaEstados;
         this.cFuente = cFuente;
     }

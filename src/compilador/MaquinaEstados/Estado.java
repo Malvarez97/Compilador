@@ -19,7 +19,8 @@ public static final int D_U_2 = 13;
 public static final int D_U_3 = 14;
 public static final int D_U_4 = 15;
 public static final int D_U_5= 16;
-public static final int FINAL = 17;
+public static final int D_U_6=17;
+public static final int FINAL = 18;
 
-public static final int TOTAL_ESTADOS = 18;
+public static final int TOTAL_ESTADOS = 19;
 }

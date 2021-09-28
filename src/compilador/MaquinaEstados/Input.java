@@ -1,12 +1,12 @@
 package compilador.MaquinaEstados;
 
 public class Input {
-    public static int DESCARTABLE = 0, SALTO_LINEA = 1, LETRA_MINUSC = 2, D_MINUSC = 3, U_MINUSC = 4, L_MINUSC = 5,
-            LETRA_MAYUS = 6, DIGITO = 7, GUION_B = 8, PORCENTAJE = 9, MENOR = 10, MAYOR = 11,  E_EXP =12 ,IGUAL = 13,
-            SUMA = 14, GUION = 15, MULTIPL = 16, DIV = 17, PARENT_A = 18, PARENT_C = 19,
-            PUNTO = 20, COMA = 21, PUNTO_COMA = 22, COMILLA = 23, OTRO = 24, EOF = 25;
+    public static int DESCARTABLE = 0, SALTO_LINEA = 1, LETRA_MINUSC = 2, E_EXP = 3, U_MINUSC = 4, L_MINUSC = 5,
+            LETRA_MAYUS = 6, DIGITO = 7, GUION_B = 8, PORCENTAJE = 9, MENOR = 10, MAYOR = 11 ,IGUAL = 12,
+            SUMA = 13, GUION = 14, MULTIPL = 15, DIV = 16, PARENT_A = 17, PARENT_C = 18,
+            PUNTO = 19, COMA = 20, PUNTO_COMA = 21, COMILLA = 22, OTRO = 23, EOF = 24;
 
-    public static int TOTAL_INPUTS = 26;
+    public static int TOTAL_INPUTS = 25;
 
     /**
      * Devuelve el codigo asociado al input recibido.
@@ -21,8 +21,6 @@ public class Input {
                 return DESCARTABLE;
             case '\n':
                 return SALTO_LINEA;
-            case 'd':
-                return D_MINUSC;
             case 'u':
                 return U_MINUSC;
             case 'l':

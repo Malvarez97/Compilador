@@ -1,5 +1,6 @@
 package compilador.Asemanticas;
 
+import compilador.AnalizadorLex;
 import compilador.MaquinaEstados.MaquinaEstados;
 import compilador.TablaSimbolos;
 // esta clase verifica los exponenetes y ademas si se encuentra en el rango correcto
@@ -27,13 +28,13 @@ public class GeneraDouble extends AccionSemantica{
         if (baseInicializada()) {// si hay una base inicializada
 
             if (getString().isEmpty() || getString().equals("-") || getString().equals("+")) {
-                Notificacion.addWarnings(maquina.getLineaActual(), "no hay exponente,fue tomado el exponente 0 por defecto");
+                AnalizadorLex.Notificacion.addWarnings(maquina.getLineaActual(), "no hay exponente,fue tomado el exponente 0 por defecto");
             } else try {
                 exponente = Integer.parseInt(getString());
             } catch (NumberFormatException numerFormatEx) {
                 valido = false;
                 maquina.reiniciar();// reinicio el estado de la maquina de estados
-                Notificacion.addError(maquina.getLineaActual(), "el exponente  " + getString() + "del numero double se fue de Rango ");
+                AnalizadorLex.Notificacion.addError(maquina.getLineaActual(), "el exponente  " + getString() + "del numero double se fue de Rango ");
             }
             if (valido && doubleValido(getBaseDouble(),exponente)){ // refactorizo el numero e inserto el numero final
                 double numfinal= getBaseDouble()*Math.pow(10,exponente);
@@ -49,12 +50,12 @@ public class GeneraDouble extends AccionSemantica{
                 if (expFueraRango(expNumDouble)) {
                      maquina.reiniciar(); //Evita que la maquina quede en el estado final, para que el lexico no genere un token.
                      valido = false;
-                     Notificacion.addError(maquina.getLineaActual(),"El exponente '" + expNumDouble + "' esta fuera de rango.");
+                     AnalizadorLex.Notificacion.addError(maquina.getLineaActual(),"El exponente '" + expNumDouble + "' esta fuera de rango.");
                  }
                   else if (doubleFueraRango(baseNumDouble, expNumDouble)) {
                      maquina.reiniciar(); //Evita que la maquina quede en el estado final, para que el lexico no genere un token.
                      valido = false;
-                     Notificacion.addError(maquina.getLineaActual(),"El numero DOUBLE '" + baseNumDouble * Math.pow(10, expNumDouble) + "' esta fuera de rango.");
+                     AnalizadorLex.Notificacion.addError(maquina.getLineaActual(),"El numero DOUBLE '" + baseNumDouble * Math.pow(10, expNumDouble) + "' esta fuera de rango.");
                  }
 
                  return valido;

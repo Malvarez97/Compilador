@@ -1,12 +1,15 @@
 package compilador.Asemanticas;
 
+import compilador.AnalizadorLex;
 import compilador.MaquinaEstados.MaquinaEstados;
 import compilador.TablaPalabrasReserv;
 
-public class GeneraPr extends AccionSemantica{
+// corrobora si la palabra reservada es valida y agrega el token a la lista de tokens
+
+public class GeneraTPr extends AccionSemantica{
     private MaquinaEstados maquina ;
 
-    public GeneraPr(MaquinaEstados maquina){
+    public GeneraTPr(MaquinaEstados maquina){
         this.maquina=maquina;
     }
 
@@ -17,7 +20,7 @@ public class GeneraPr extends AccionSemantica{
             maquina.setVariablesSintactico(TablaPalabrasReserv.getToken(palabra),""); //
         }else
         {
-            Notificacion.addError(maquina.getLineaActual(),"la palabra resevada siguiente no fue encontrada como palabra reservada"+palabra);
+            AnalizadorLex.Notificacion.addError(maquina.getLineaActual(),"la palabra resevada siguiente no fue encontrada como palabra reservada"+palabra);
             maquina.reiniciar();
         }
 

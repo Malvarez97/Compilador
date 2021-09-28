@@ -4,30 +4,21 @@ import compilador.AnalizadorLex;
 import compilador.CodigoFuente;
 
 public class NotWarning extends AccionSemantica{
-    private String mensaje;
-    private CodigoFuente codigoFuente;
-    private boolean irreconocible;
-    private AnalizadorLex lexico;
-    // esta clase sirve para notificar los warnings
+    private  String mensaje;
+    private AnalizadorLex aLexico;
 
-    public NotWarning(String mensaje, CodigoFuente codigoFuente, boolean irreconocible, AnalizadorLex lexico) {
+    public NotWarning(String mensaje, AnalizadorLex aLexico) {
         this.mensaje = mensaje;
-        this.codigoFuente = codigoFuente;
-        irreconocible = irreconocible;
-        this.lexico = lexico;
+        this.aLexico = aLexico;
     }
 
+    /**
+     * Accion semantica auxiliar para notificar warnings.
+     */
     @Override
     public void ejecutar() {
-        String warning ="";
-        if (irreconocible){
-            warning += " El Simbolo  : "+codigoFuente.simActual()+ "no fue reconocido";
-        }
-        else{
-            warning += mensaje;
-            Notificacion.addError(lexico.getLineaActual(),warning );
-        }
-
-
+        AnalizadorLex.Notificacion.addWarnings(aLexico.getLineaActual(),mensaje);
     }
-}
+        }
+
+

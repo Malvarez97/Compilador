@@ -14,7 +14,7 @@ public class TruncId  extends AccionSemantica {
 	public void ejecutar() {
 		if(maxString < tamString()) {
 			truncaString(maxString);
-			Notificacion.addWarnings(lexico.getLineaActual(),null );
+			AnalizadorLex.Notificacion.addWarnings(lexico.getLineaActual(),null );
 		}
 	}
 }

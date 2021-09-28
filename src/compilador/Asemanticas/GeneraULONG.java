@@ -1,5 +1,6 @@
 package compilador.Asemanticas;
 
+import compilador.AnalizadorLex;
 import compilador.MaquinaEstados.MaquinaEstados;
 import compilador.TablaSimbolos;
 
@@ -23,7 +24,7 @@ public class GeneraULONG extends AccionSemantica{
             ts.setUsoEntrada(getString(), "CTE");
             maquina.setVariablesSintactico(token, getString());
         } else {
-            Notificacion.addError(maquina.getLineaActual(), "Numero " + numero + " esta fuera del rango permitdo ");
+            AnalizadorLex.Notificacion.addError(maquina.getLineaActual(), "Numero " + numero + " esta fuera del rango permitdo ");
             maquina.reiniciar();
         }
     }// puede que se rompa por algo, chusemar si pasa ..
