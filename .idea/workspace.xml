@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e04bfcb4-4100-438b-891d-719aa088eaa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/ChequeoSLinea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraPr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTPr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTokenLiteral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTokenParticular.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTokenTSimbolos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraULONG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraULONG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/NotError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/NotError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/NotWarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/NotWarning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/Notificacion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/TruncId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/TruncId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/MaquinaEstados/Estado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados/Estado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/MaquinaEstados/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados/Input.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/MaquinaEstados/MaquinaEstados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados/MaquinaEstados.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

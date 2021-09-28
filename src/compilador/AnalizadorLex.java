@@ -34,7 +34,7 @@ public class AnalizadorLex {
 	    }
 
 	    public int produceToken(){
-	        while (!maquinaEstados.estadoFinalAlcanzado()){
+	        while (!maquinaEstados.esEstadoFinal()){
 	            if (cod_Fuente.eof()) maquinaEstados.cambiarEOF();
 	            else {
 	                maquinaEstados.cambiar(cod_Fuente.simActual());
