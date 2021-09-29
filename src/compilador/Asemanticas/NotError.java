@@ -2,6 +2,7 @@ package compilador.Asemanticas;
 
 import compilador.AnalizadorLex;
 import compilador.util.CodigoFuente;
+import compilador.util.Notificacion;
 
 public class NotError extends AccionSemantica{
     private String mensaje;
@@ -24,7 +25,7 @@ public class NotError extends AccionSemantica{
      }
      else error+=mensaje;
 
-     AnalizadorLex.Notificacion.addError(lexico.getLineaActual(),error);
+     Notificacion.addError(lexico.getLineaActual(),error);
 
     }
 }

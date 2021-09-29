@@ -1,6 +1,7 @@
 package compilador.Asemanticas;
 
 import compilador.AnalizadorLex;
+import compilador.util.Notificacion;
 
 public class TruncId  extends AccionSemantica {
 	
@@ -14,7 +15,7 @@ public class TruncId  extends AccionSemantica {
 	public void ejecutar() {
 		if(maxString < tamString()) {
 			truncaString(maxString);
-			AnalizadorLex.Notificacion.addWarnings(lexico.getLineaActual(),null );
+			Notificacion.addWarnings(lexico.getLineaActual(),null );
 		}
 	}
 }

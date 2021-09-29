@@ -1,6 +1,7 @@
 package compilador.Asemanticas;
 
 import compilador.AnalizadorLex;
+import compilador.util.Notificacion;
 
 public class NotWarning extends AccionSemantica{
     private  String mensaje;
@@ -16,7 +17,7 @@ public class NotWarning extends AccionSemantica{
      */
     @Override
     public void ejecutar() {
-        AnalizadorLex.Notificacion.addWarnings(aLexico.getLineaActual(),mensaje);
+        Notificacion.addWarnings(aLexico.getLineaActual(),mensaje);
     }
         }
 
