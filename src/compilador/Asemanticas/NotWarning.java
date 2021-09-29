@@ -1,7 +1,6 @@
 package compilador.Asemanticas;
 
 import compilador.AnalizadorLex;
-import compilador.CodigoFuente;
 
 public class NotWarning extends AccionSemantica{
     private  String mensaje;

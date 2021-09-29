@@ -1,7 +1,7 @@
 package compilador.Asemanticas;
 
 import compilador.MaquinaEstados.MaquinaEstados;
-import compilador.TablaSimbolos;
+import compilador.SIMBOLOS.TablaSimbolos;
 
 /**
  * Si la TS contiene una entrada con el lexema actual, incrementa su numero de referencias en uno. Si no la

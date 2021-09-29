@@ -1,6 +1,6 @@
 package compilador.Asemanticas;
 
-import compilador.AlmacenToken;
+import compilador.util.AlmacenToken;
 import compilador.MaquinaEstados.MaquinaEstados;
 // Genera token particular
 public class GeneraTokenParticular extends AccionSemantica{

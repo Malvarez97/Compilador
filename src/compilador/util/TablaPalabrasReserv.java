@@ -1,4 +1,4 @@
-package compilador;
+package compilador.util;
 
 import java.util.HashMap;
 import java.util.Map;

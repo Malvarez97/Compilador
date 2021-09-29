@@ -2,6 +2,9 @@ package compilador;
 
 
 import compilador.MaquinaEstados.MaquinaEstados;
+import compilador.SIMBOLOS.TablaSimbolos;
+import compilador.util.CodigoFuente;
+import compilador.util.TablaPalabrasReserv;
 
 import java.util.ArrayList;
 import java.util.List;

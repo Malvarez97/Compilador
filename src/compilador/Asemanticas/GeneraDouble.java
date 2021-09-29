@@ -2,7 +2,7 @@ package compilador.Asemanticas;
 
 import compilador.AnalizadorLex;
 import compilador.MaquinaEstados.MaquinaEstados;
-import compilador.TablaSimbolos;
+import compilador.SIMBOLOS.TablaSimbolos;
 // esta clase verifica los exponenetes y ademas si se encuentra en el rango correcto
 
 public class GeneraDouble extends AccionSemantica{

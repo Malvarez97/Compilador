@@ -1,4 +1,4 @@
-package compilador;
+package compilador.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +13,7 @@ public class AlmacenToken {
     public void add(short t, String nombre){
         tokens.put(t,nombre);
     }
+
     public static String getRepresentacion(short token){// no me deja retornar nada despues de la excepcion nunca lo habia visto asi
         if (tokens.get(token)!= null){
             return tokens.get(token);

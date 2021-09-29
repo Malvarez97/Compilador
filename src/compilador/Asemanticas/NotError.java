@@ -1,7 +1,7 @@
 package compilador.Asemanticas;
 
 import compilador.AnalizadorLex;
-import compilador.CodigoFuente;
+import compilador.util.CodigoFuente;
 
 public class NotError extends AccionSemantica{
     private String mensaje;

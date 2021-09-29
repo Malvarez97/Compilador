@@ -1,10 +1,10 @@
-package compilador;
+package compilador.SIMBOLOS;
 
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import compilador.Casilla;
+import compilador.SIMBOLOS.Casilla;
 
 public class TablaSimbolos {
 	private final Map<String, Casilla> tablaSimb;
@@ -43,8 +43,8 @@ public class TablaSimbolos {
                 }
             }
 
-            //UINT
-            if (celda.getTipo().equals(Casilla.TIPO_UINT)
+            //ULONG
+            if (celda.getTipo().equals(Casilla.TIPO_ULONG)
                     && (celda.getUso().equals(Casilla.USO_VAR) || celda.isParamCVR() || celda.isParamCV())){
                 if (lexema.startsWith("PROGRAM")) asmBuilder.append('_'); //Variable no auxiliar.
                 asmBuilder.append(lexema).append(" DW ").append(0).append('\n');
@@ -73,37 +73,34 @@ public class TablaSimbolos {
     }
 
     //---INSERCION, ELIMINACION Y OBTENCION DE ENTRADAS---
-
+    // agrega una nueva entrada si no existe en la tabla
     public boolean contieneLexema(String lexema) {
         return tablaSimb.containsKey(lexema);
     }
 
-    /**
-     * Agrega una nueva entrada solo si no existe en la tabla.
-     */
+    // agrega una nueva entrada si no existe en la tabla
+
     public void agregarEntrada(Casilla entrada){
         if (tablaSimb.containsKey(entrada.getLexema()))
             throw new IllegalStateException("Ya hay una entrada con el lexema '"+entrada.getLexema()+"'.");
         tablaSimb.put(entrada.getLexema(), entrada);
         entrada.actualizarReferencias(1);
     }
+    //agrega una celda (token,lexema,tipo). si existe incrementa la referencia
 
-    /**
-     * Agrega una celda (token,lexema,tipo). En caso de existir previamente, incrementa en uno las referencias a la
-     * celda.
-     */
     public void agregarEntrada(int token, String lexema, String tipo) {
     	Casilla celda;
 
         if (tablaSimb.containsKey(lexema))  //Si el lexema existe extraigo la celda para actualizar las referencias
             celda = getEntrada(lexema);
         else {//Si no existe creo una nueva y la inserto.
-            celda = new Casilla(token, lexema, tipo);
+            celda = new Casilla(token, lexema, tipo );
             tablaSimb.put(lexema, celda);
         }
         celda.actualizarReferencias(1);
     }
 
+    // consulto los datos de le entrada
     public Casilla getEntrada(String lexema) {
     	Casilla celda = tablaSimb.get(lexema);
 
@@ -112,7 +109,6 @@ public class TablaSimbolos {
         return celda;
     }
 
-    //---CONSULTAS DATOS ENTRADAS---
 
     public void agregarReferencia(String lexema){
     	Casilla celda = tablaSimb.get(lexema);

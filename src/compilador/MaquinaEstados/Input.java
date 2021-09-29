@@ -4,18 +4,13 @@ public class Input {
     public static int DESCARTABLE = 0, SALTO_LINEA = 1, LETRA_MINUSC = 2, E_EXP = 3, U_MINUSC = 4, L_MINUSC = 5,
             LETRA_MAYUS = 6, DIGITO = 7, GUION_B = 8, PORCENTAJE = 9, MENOR = 10, MAYOR = 11 ,IGUAL = 12,
             SUMA = 13, GUION = 14, MULTIPL = 15, DIV = 16, PARENT_A = 17, PARENT_C = 18,
-            PUNTO = 19, COMA = 20, PUNTO_COMA = 21, COMILLA = 22, OTRO = 23, EOF = 24;
+            PUNTO = 19, COMA = 20, PUNTO_COMA = 21, COMILLA = 22, OTRO = 23, OR=24 ,AND=25, DOSP =26 ,EOF = 27;
 
-    public static int TOTAL_INPUTS = 25;
+    public static int TOTAL_INPUTS = 28;
 
-    /**
-     * Devuelve el codigo asociado al input recibido.
-     *
-     * @param inputChar caracter leido.
-     * @return el codigo asociado al caracter leido.
-     */
-    public static int charToInt(char inputChar) {
-        switch (inputChar) {
+   // clase contenedora de los numeros asignados a cada una de las entradas
+    public static int charToInt(char input) {
+        switch (input) {
             case '\t':
             case ' ':
                 return DESCARTABLE;
@@ -57,11 +52,18 @@ public class Input {
                 return COMILLA;
             case 'E':
                 return E_EXP;
+            case '|':
+                return OR;
+            case'&':
+                return AND;
+            case ':':
+                return DOSP;
+
         }
 
-        if (inputChar >= 'a' && inputChar <= 'z') return LETRA_MINUSC;
-        if (inputChar >= 'A' && inputChar <= 'Z') return LETRA_MAYUS;
-        if (inputChar >= '0' && inputChar <= '9') return DIGITO;
+        if (input >= 'a' && input <= 'z') return LETRA_MINUSC;
+        if (input >= 'A' && input <= 'Z') return LETRA_MAYUS;
+        if (input>= '0' && input <= '9') return DIGITO;
 
         return OTRO;
     }

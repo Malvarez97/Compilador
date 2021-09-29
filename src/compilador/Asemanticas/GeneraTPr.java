@@ -2,7 +2,7 @@ package compilador.Asemanticas;
 
 import compilador.AnalizadorLex;
 import compilador.MaquinaEstados.MaquinaEstados;
-import compilador.TablaPalabrasReserv;
+import compilador.util.TablaPalabrasReserv;
 
 // corrobora si la palabra reservada es valida y agrega el token a la lista de tokens
 

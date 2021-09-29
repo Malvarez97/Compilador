@@ -1,6 +1,6 @@
 package compilador.Asemanticas;
 
-import compilador.CodigoFuente;
+import compilador.util.CodigoFuente;
 
 public class Retrocede_Fuente extends AccionSemantica{
     private CodigoFuente codigo;

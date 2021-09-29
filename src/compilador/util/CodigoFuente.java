@@ -1,4 +1,4 @@
-package compilador;
+package compilador.util;
 
 public class CodigoFuente {
 	

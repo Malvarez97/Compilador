@@ -1,16 +1,15 @@
-package compilador;
+package compilador.SIMBOLOS;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Casilla {
 	
-	//VER BIEN PARA QUE FUNCIONA
 	public static final String USO_PROC = "Proc";
     public static final String USO_VAR = "Var";
     public static final String USO_PARAM_CVR = "ParamCVR";
     public static final String USO_PARAM_CV = "ParamCV";
-    public static final String TIPO_LONG = "LONG";
+    public static final String TIPO_ULONG = "ULONG";
     public static final String TIPO_DOUBLE = "DOUBLE";
     public static final String USO_CTE = "CTE";
     
@@ -34,6 +33,13 @@ public class Casilla {
         this.tipo = tipo;
         this.uso = uso;
         this.declarada = declarada;
+    }
+    public Casilla(int token, String lexema, String tipo) {
+        this.token = token;
+        this.lexema = lexema;
+        this.tipo = tipo;
+        this.referencias=0;
+        this.declarada = true;
     }
   
     public String toString() {

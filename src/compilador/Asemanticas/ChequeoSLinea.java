@@ -1,6 +1,6 @@
 package compilador.Asemanticas;
 
-import compilador.CodigoFuente;
+import compilador.util.CodigoFuente;
 import compilador.MaquinaEstados.MaquinaEstados;
 
 public class ChequeoSLinea extends AccionSemantica{
