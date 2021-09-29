@@ -1,7 +1,7 @@
 package compilador.MaquinaEstados;
 
 
-public class Estado{
+public class Contenedor_Estados {
 public static final int INICIAL = 0;
 public static final int DETECCION_ID = 1;
 public static final int DETECCION_PR = 2;

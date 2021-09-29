@@ -1,6 +1,6 @@
 package compilador.MaquinaEstados;
 
-public class Input {
+public class Contenedor_Inputs {
     public static int DESCARTABLE = 0, SALTO_LINEA = 1, LETRA_MINUSC = 2, E_EXP = 3, U_MINUSC = 4, L_MINUSC = 5,
             LETRA_MAYUS = 6, DIGITO = 7, GUION_B = 8, PORCENTAJE = 9, MENOR = 10, MAYOR = 11 ,IGUAL = 12,
             SUMA = 13, GUION = 14, MULTIPL = 15, DIV = 16, PARENT_A = 17, PARENT_C = 18,

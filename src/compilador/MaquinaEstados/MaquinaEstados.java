@@ -8,10 +8,10 @@ import compilador.util.CodigoFuente;
 import compilador.util.TablaPalabrasReserv;
 
 public class MaquinaEstados {
-		private final AristaEstado[][] maquinaEstados = new AristaEstado[Estado.TOTAL_ESTADOS][Input.TOTAL_INPUTS]; //[filas][columnas].
+		private final AristaEstado[][] maquinaEstados = new AristaEstado[Contenedor_Estados.TOTAL_ESTADOS][Contenedor_Inputs.TOTAL_INPUTS]; //[filas][columnas].
 	    private final AnalizadorLex aLexico; //Permite agregar tokens a medida que se generan.
 	    private final CuentaSaltoLinea cuentaSaltoLinea = new CuentaSaltoLinea(); //Permite saber la linea actual
-	    private int estadoActual = Estado.INICIAL;
+	    private int estadoActual = Contenedor_Estados.INICIAL;
 
 
 	    public MaquinaEstados(AnalizadorLex aLexico, CodigoFuente cFuente, TablaSimbolos tablaS,
@@ -39,9 +39,9 @@ public class MaquinaEstados {
 
 
 	        //  Inicializacion de estados y transiciones
-	        inicTransiciones(Estado.INICIAL, Estado.INICIAL, notificaELexico); // Error por defecto del lexico
-	        maquinaEstados[Estado.INICIAL][Input.DESCARTABLE] = new AristaEstado(Estado.INICIAL);
-	        maquinaEstados[Estado.INICIAL][Input.SALTO_LINEA] = new AristaEstado(Estado.INICIAL,
+	        inicTransiciones(Contenedor_Estados.INICIAL, Contenedor_Estados.INICIAL, notificaELexico); // Error por defecto del lexico
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.DESCARTABLE] = new AristaEstado(Contenedor_Estados.INICIAL);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.INICIAL,
 	            cuentaSaltoLinea); //Salto de linea.
 	        inicCaminoLiterales(cFuente);
 	        inicCaminoIds(inicStringVacio, concatenaChar, truncaId, generaTokenId, retrocedeFuente);
@@ -55,13 +55,13 @@ public class MaquinaEstados {
 			inicCaminoop(cFuente,consumeChar,retrocedeFuente,tokenLiteral);
 			inicCaminoAnd(cFuente,consumeChar,retrocedeFuente,tokenLiteral);
 
-	        maquinaEstados[Estado.INICIAL][Input.EOF] = new AristaEstado(Estado.FINAL, generarEOF);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generarEOF);
 
 	    }
 
 
 	    public boolean esEstadoFinal() {
-	        return estadoActual == Estado.FINAL;
+	        return estadoActual == Contenedor_Estados.FINAL;
 	    } // retorna true cuando la maquina termine de leer
 
 	    public void reiniciar() {
@@ -78,7 +78,7 @@ public class MaquinaEstados {
 
 
 	    public void cambiar(char input) { // simula las transiciones de estados
-	        int codigoInput = Input.charToInt(input);
+	        int codigoInput = Contenedor_Inputs.charToInt(input);
 
 			AristaEstado AristaEstado = maquinaEstados[estadoActual][codigoInput];
 
@@ -89,28 +89,28 @@ public class MaquinaEstados {
 
 
 	    public void cambiarEOF() { //
-			AristaEstado TransicionEstados = maquinaEstados[estadoActual][Input.EOF];
+			AristaEstado TransicionEstados = maquinaEstados[estadoActual][Contenedor_Inputs.EOF];
 	        TransicionEstados.ejecutar();
 	        aLexico.setVariablesSintactico(AnalizadorLex.T_EOF, ""); //Genera el token asociado al EOF ('0').
-	        estadoActual = Estado.FINAL; //Finalizo ejecucion
+	        estadoActual = Contenedor_Estados.FINAL; //Finalizo ejecucion
 	    }
 
 	    // Inicializa las trancisiones de todos los estados por defecto que tiene esa fila de la matriz
 	    private void inicTransiciones(int estadoOrigen, int estadoDestino, AccionSemantica... accionesSemanticas) {
-	        for (int input = 0; input < Input.TOTAL_INPUTS; input++)
+	        for (int input = 0; input < Contenedor_Inputs.TOTAL_INPUTS; input++)
 	            maquinaEstados[estadoOrigen][input] = new AristaEstado(estadoDestino, accionesSemanticas);
 	    }
 
 	// inicializo las transiciones asociadas de los identificadores
 	    private void inicCaminoLiterales(CodigoFuente cFuente) {
 	        GeneraTokenLiteral generaTokenL= new GeneraTokenLiteral(this, cFuente);
-	        maquinaEstados[Estado.INICIAL][Input.SUMA] = new AristaEstado(Estado.FINAL, generaTokenL);
-	        maquinaEstados[Estado.INICIAL][Input.GUION] = new AristaEstado(Estado.FINAL, generaTokenL);
-	        maquinaEstados[Estado.INICIAL][Input.MULTIPL] = new AristaEstado(Estado.FINAL, generaTokenL);
-	        maquinaEstados[Estado.INICIAL][Input.PARENT_A] = new AristaEstado(Estado.FINAL, generaTokenL);
-	        maquinaEstados[Estado.INICIAL][Input.PARENT_C] = new AristaEstado(Estado.FINAL, generaTokenL);
-	        maquinaEstados[Estado.INICIAL][Input.COMA] = new AristaEstado(Estado.FINAL, generaTokenL);
-	        maquinaEstados[Estado.INICIAL][Input.PUNTO_COMA] = new AristaEstado(Estado.FINAL, generaTokenL);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.SUMA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.GUION] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.MULTIPL] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.PARENT_A] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.PARENT_C] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.COMA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.PUNTO_COMA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);
 	    }
 
 
@@ -119,53 +119,51 @@ public class MaquinaEstados {
 
 
 	        // Estado 0
-	        maquinaEstados[Estado.INICIAL][Input.U_MINUSC] = new AristaEstado(Estado.DETECCION_ID, inicStringVacio, concatenaChar);
-	        maquinaEstados[Estado.INICIAL][Input.L_MINUSC] = new AristaEstado(Estado.DETECCION_ID, inicStringVacio, concatenaChar);
-	        maquinaEstados[Estado.INICIAL][Input.LETRA_MINUSC] = new AristaEstado(Estado.DETECCION_ID, inicStringVacio, concatenaChar);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.U_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, inicStringVacio, concatenaChar);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.L_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, inicStringVacio, concatenaChar);
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.LETRA_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, inicStringVacio, concatenaChar);
 
 	        // Estado  1 Deteccion de Id
 			// Entradas no reconocidas por el compilador
-	        inicTransiciones(Estado.DETECCION_ID, Estado.FINAL, truncaId, generaTokenId, retrocedeFuente);
+	        inicTransiciones(Contenedor_Estados.DETECCION_ID, Contenedor_Estados.FINAL, truncaId, generaTokenId, retrocedeFuente);
 			// Interaccion en salto de linea
-	        maquinaEstados[Estado.DETECCION_ID][Input.SALTO_LINEA] = new AristaEstado(Estado.FINAL, truncaId, generaTokenId, cuentaSaltoLinea);
+	        maquinaEstados[Contenedor_Estados.DETECCION_ID][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.FINAL, truncaId, generaTokenId, cuentaSaltoLinea);
 
 
 			//Letras minusculas.
-	        maquinaEstados[Estado.DETECCION_ID][Input.U_MINUSC] = new AristaEstado(Estado.DETECCION_ID, concatenaChar);
-	        maquinaEstados[Estado.DETECCION_ID][Input.L_MINUSC] = new AristaEstado(Estado.DETECCION_ID, concatenaChar);
-	        maquinaEstados[Estado.DETECCION_ID][Input.LETRA_MINUSC] = new AristaEstado(Estado.DETECCION_ID, concatenaChar);
+	        maquinaEstados[Contenedor_Estados.DETECCION_ID][Contenedor_Inputs.U_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, concatenaChar);
+	        maquinaEstados[Contenedor_Estados.DETECCION_ID][Contenedor_Inputs.L_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, concatenaChar);
+	        maquinaEstados[Contenedor_Estados.DETECCION_ID][Contenedor_Inputs.LETRA_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, concatenaChar);
 			// DIGITOS
-	        maquinaEstados[Estado.DETECCION_ID][Input.DIGITO] = new AristaEstado(Estado.DETECCION_ID, concatenaChar);
+	        maquinaEstados[Contenedor_Estados.DETECCION_ID][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.DETECCION_ID, concatenaChar);
 	        //GUION BAJO
-	        maquinaEstados[Estado.DETECCION_ID][Input.GUION_B] = new AristaEstado(Estado.DETECCION_ID, concatenaChar);
+	        maquinaEstados[Contenedor_Estados.DETECCION_ID][Contenedor_Inputs.GUION_B] = new AristaEstado(Contenedor_Estados.DETECCION_ID, concatenaChar);
 	        //EOF. Voy directo al estado final. No hace falta devolver ultimo leido.
-	        maquinaEstados[Estado.DETECCION_ID][Input.EOF] = new AristaEstado(Estado.FINAL, truncaId, generaTokenId);
+	        maquinaEstados[Contenedor_Estados.DETECCION_ID][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, truncaId, generaTokenId);
 	    }
 
 
 	    private void inicCaminoPRs(AccionSemantica inicStringVacio, AccionSemantica concatenaChar,
 	                               AccionSemantica generaTokenPR, AccionSemantica retrocedeFuente) {
 	        // Estado 0
-	        maquinaEstados[Estado.INICIAL][Input.LETRA_MAYUS] = new AristaEstado(Estado.DETECCION_PR, inicStringVacio,
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.LETRA_MAYUS] = new AristaEstado(Contenedor_Estados.DETECCION_PR, inicStringVacio,
 	            concatenaChar);
 
-	        // Estado 1
+	        // Estado 2
 			// Entradas que no fueron reconocidas
-	        inicTransiciones(Estado.DETECCION_PR, Estado.FINAL, generaTokenPR, retrocedeFuente);
+	        inicTransiciones(Contenedor_Estados.DETECCION_PR, Contenedor_Estados.FINAL, generaTokenPR, retrocedeFuente);
 
 			//Salto de linea. Cuento la nueva linea y descarto el ultimo valore leido
-	        maquinaEstados[Estado.DETECCION_PR][Input.SALTO_LINEA] = new AristaEstado(Estado.FINAL, generaTokenPR,
+	        maquinaEstados[Contenedor_Estados.DETECCION_PR][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenPR,
 	            cuentaSaltoLinea);
 
   			//Letras mayusculas.
-	        maquinaEstados[Estado.DETECCION_PR][Input.LETRA_MAYUS] = new AristaEstado(Estado.DETECCION_PR,
+	        maquinaEstados[Contenedor_Estados.DETECCION_PR][Contenedor_Inputs.LETRA_MAYUS] = new AristaEstado(Contenedor_Estados.DETECCION_PR,
 	            concatenaChar);
-
-			//Guion bajo.
-	        maquinaEstados[Estado.DETECCION_PR][Input.GUION_B] = new AristaEstado(Estado.DETECCION_PR, concatenaChar);
+			// borre las palabras reservadas por que no hay con _(ACORDARME)
 
 			//EOF. Voy directo al estado final. No hace falta devolver ultimo leido.
-	        maquinaEstados[Estado.DETECCION_PR][Input.EOF] = new AristaEstado(Estado.FINAL, generaTokenPR);
+	        maquinaEstados[Contenedor_Estados.DETECCION_PR][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenPR);
 
 
 	    }
@@ -175,31 +173,31 @@ public class MaquinaEstados {
 	                                      AccionSemantica notificaErrorLexico) {
 
 			/// Estado 0
-	        maquinaEstados[Estado.INICIAL][Input.DIV] = new AristaEstado(Estado.COMENTARIO);//inicio transicion de comentario o division
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.DIV] = new AristaEstado(Contenedor_Estados.COMENTARIO);//inicio transicion de comentario o division
 			
 	        // Estado 3 , posible division o comentario
 			GeneraTokenParticular token = new GeneraTokenParticular(this,(short)'/');
-			inicTransiciones(Estado.COMENTARIO, Estado.FINAL, retrocedeFuente,token);// si viene otra cosa genero el /
+			inicTransiciones(Contenedor_Estados.COMENTARIO, Contenedor_Estados.FINAL, retrocedeFuente,token);// si viene otra cosa genero el /
 
-			maquinaEstados[Estado.COMENTARIO][Input.DIV] = new AristaEstado(Estado.COMENTARIO2);
+			maquinaEstados[Contenedor_Estados.COMENTARIO][Contenedor_Inputs.DIV] = new AristaEstado(Contenedor_Estados.COMENTARIO2);
 
 
 			//Estado 4
 
-			inicTransiciones(Estado.COMENTARIO, Estado.COMENTARIO); // cuerpo del comentario, no realizo ninguna accion
+			inicTransiciones(Contenedor_Estados.COMENTARIO, Contenedor_Estados.COMENTARIO); // cuerpo del comentario, no realizo ninguna accion
 
-			maquinaEstados[Estado.COMENTARIO2][Input.DIV]= new AristaEstado(Estado.COMENTARIO3);// posible salida del comentario
+			maquinaEstados[Contenedor_Estados.COMENTARIO2][Contenedor_Inputs.DIV]= new AristaEstado(Contenedor_Estados.COMENTARIO3);// posible salida del comentario
 
 	        NotError errorEOF = new NotError("Simbolo no reconocido por el compilador", aLexico, cFuente, true);
-	        maquinaEstados[Estado.COMENTARIO][Input.EOF] = new AristaEstado(Estado.FINAL, errorEOF);
+	        maquinaEstados[Contenedor_Estados.COMENTARIO][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, errorEOF);
 			// si tengo un comentario y EOF retorno termino y retorno el error
 
 			// Estado 5 
-			inicTransiciones(Estado.COMENTARIO3, Estado.COMENTARIO2); // sigue siendo cuerpo del comentario
-	        maquinaEstados[Estado.COMENTARIO3][Input.DIV]= new AristaEstado(Estado.INICIAL); // fin del comentario
+			inicTransiciones(Contenedor_Estados.COMENTARIO3, Contenedor_Estados.COMENTARIO2); // sigue siendo cuerpo del comentario
+	        maquinaEstados[Contenedor_Estados.COMENTARIO3][Contenedor_Inputs.DIV]= new AristaEstado(Contenedor_Estados.INICIAL); // fin del comentario
 
 			NotWarning wareof =new NotWarning("se termino la ejecucion dentro de un comentario",aLexico);
-			maquinaEstados[Estado.COMENTARIO3][Input.EOF] = new AristaEstado(Estado.FINAL);
+			maquinaEstados[Contenedor_Estados.COMENTARIO3][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL);
 			
 	    }
 
@@ -210,30 +208,30 @@ public class MaquinaEstados {
 			// Estado 0
 
 			// Token '<':
-			maquinaEstados[Estado.INICIAL][Input.MENOR] = new AristaEstado(Estado.DISTYMENOR);// para mi esta mal
+			maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.MENOR] = new AristaEstado(Contenedor_Estados.DISTYMENOR);// para mi esta mal
 
 			// Token '>' o '='
-			maquinaEstados[Estado.INICIAL][Input.MAYOR] = new AristaEstado(Estado.COMPYMAYOR);
-			maquinaEstados[Estado.INICIAL][Input.IGUAL] = new AristaEstado(Estado.COMPYMAYOR);
+			maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.MAYOR] = new AristaEstado(Contenedor_Estados.COMPYMAYOR);
+			maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.IGUAL] = new AristaEstado(Contenedor_Estados.COMPYMAYOR);
 
 
 			// Estado 6
 			GeneraTokenParticular generaTokenPR = new GeneraTokenParticular(this,(short) '>') ;
-			inicTransiciones(Estado.COMPYMAYOR, Estado.FINAL,retrocedeFuente,generaTokenPR);
+			inicTransiciones(Contenedor_Estados.COMPYMAYOR, Contenedor_Estados.FINAL,retrocedeFuente,generaTokenPR);
 
-			maquinaEstados[Estado.COMPYMAYOR][Input.IGUAL] = new AristaEstado(Estado.FINAL,consumeChar);
+			maquinaEstados[Contenedor_Estados.COMPYMAYOR][Contenedor_Inputs.IGUAL] = new AristaEstado(Contenedor_Estados.FINAL,consumeChar);
 			NotError errorEOF = new NotError("Simbolo no reconocido por el compilador", aLexico, cFuente, true);
-			maquinaEstados[Estado.COMPYMAYOR][Input.EOF] = new AristaEstado(Estado.FINAL, errorEOF);
+			maquinaEstados[Contenedor_Estados.COMPYMAYOR][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, errorEOF);
 
 
 			//Estado 7
 			GeneraTokenParticular token = new GeneraTokenParticular(this,(short)'<');
-			inicTransiciones(Estado.DISTYMENOR, Estado.FINAL, retrocedeFuente, retrocedeFuente,token);
+			inicTransiciones(Contenedor_Estados.DISTYMENOR, Contenedor_Estados.FINAL, retrocedeFuente, retrocedeFuente,token);
 
-			maquinaEstados[Estado.DISTYMENOR][Input.IGUAL] = new AristaEstado(Estado.FINAL, consumeChar);
-			maquinaEstados[Estado.DISTYMENOR][Input.MAYOR] = new AristaEstado(Estado.FINAL, consumeChar);
+			maquinaEstados[Contenedor_Estados.DISTYMENOR][Contenedor_Inputs.IGUAL] = new AristaEstado(Contenedor_Estados.FINAL, consumeChar);
+			maquinaEstados[Contenedor_Estados.DISTYMENOR][Contenedor_Inputs.MAYOR] = new AristaEstado(Contenedor_Estados.FINAL, consumeChar);
 
-			maquinaEstados[Estado.DISTYMENOR][Input.EOF] = new AristaEstado(Estado.COMPYMAYOR, errorEOF);
+			maquinaEstados[Contenedor_Estados.DISTYMENOR][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.COMPYMAYOR, errorEOF);
 
 		}
 
@@ -251,83 +249,83 @@ public class MaquinaEstados {
 	        NotWarning sinExponente = new NotWarning("no hay exponente, este sera tomado como 0 por defecto", aLexico);
 
 	        //Estado 0
-	        maquinaEstados[Estado.INICIAL][Input.DIGITO] = new AristaEstado(Estado.D_U_1, inicStringVacio,
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_1, inicStringVacio,
 	            concatenaChar);
-	        maquinaEstados[Estado.INICIAL][Input.PUNTO] = new AristaEstado(Estado.D_U_4, inicStringVacio,
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.PUNTO] = new AristaEstado(Contenedor_Estados.D_U_4, inicStringVacio,
 	            concatenaChar);
 
 	        // Estado 12
 	        //Con las salidas no reconocidas el compilador lo toma como ULONG y genera un warning
-	        inicTransiciones(Estado.D_U_1, Estado.FINAL, generaTokenULONG, retrocedeFuente, faltaSufijo);
+	        inicTransiciones(Contenedor_Estados.D_U_1, Contenedor_Estados.FINAL, generaTokenULONG, retrocedeFuente, faltaSufijo);
 	        //si hay un salto de linea, genero Warning por falta
-	        maquinaEstados[Estado.D_U_1][Input.SALTO_LINEA] = new AristaEstado(Estado.FINAL, generaTokenULONG,
+	        maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG,
 	            cuentaSaltoLinea, faltaSufijo);
 	        //Digitos.
-	        maquinaEstados[Estado.D_U_1][Input.DIGITO] = new AristaEstado(Estado.D_U_1,
+	        maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_1,
 	            concatenaChar);
 
 	        //Punto ('.'). Salto a deteccion de parte decimal de doubles.
-	        maquinaEstados[Estado.D_U_1][Input.PUNTO] = new AristaEstado(Estado.D_U_3,
+	        maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.PUNTO] = new AristaEstado(Contenedor_Estados.D_U_3,
 	            concatenaChar);
 
 			// U : empieza camino correcto ULONG
-			maquinaEstados[Estado.D_U_1][Input.U_MINUSC] = new AristaEstado(Estado.D_U_2);
+			maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.U_MINUSC] = new AristaEstado(Contenedor_Estados.D_U_2);
 
 			// OTRO
-			maquinaEstados[Estado.D_U_1][Input.OTRO] = new AristaEstado(Estado.FINAL,
+			maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL,
 					concatenaChar);
 
 
 	        //EOF. Crea un UINT pero genera un warning por falta de sufijo.
-	        maquinaEstados[Estado.D_U_1][Input.EOF] = new AristaEstado(Estado.FINAL, generaTokenULONG,
+	        maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG,
 	            faltaSufijo);
 
 	        // Estado 13
 
 	        // Crea un ULONG  por defecto pero genera un warning por falta de sufijo.
-	        inicTransiciones(Estado.D_U_2, Estado.FINAL, retrocedeFuente, generaTokenULONG, sufijoInvalido);
+	        inicTransiciones(Contenedor_Estados.D_U_2, Contenedor_Estados.FINAL, retrocedeFuente, generaTokenULONG, sufijoInvalido);
 	        //Salto de linea. Crea un UINT pero genera un warning por falta de sufijo.
-	        maquinaEstados[Estado.D_U_2][Input.SALTO_LINEA] = new AristaEstado(Estado.FINAL, generaTokenULONG,
+	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG,
 	            cuentaSaltoLinea, sufijoInvalido);
 	        //Letra 'l' minuscula.
-	        maquinaEstados[Estado.D_U_2][Input.L_MINUSC] = new AristaEstado(Estado.D_U_6); // no hace nada ya que la parte ul del sufijo solo me importa para clasificar
+	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.L_MINUSC] = new AristaEstado(Contenedor_Estados.D_U_6); // no hace nada ya que la parte ul del sufijo solo me importa para clasificar
 
 			//Cualquier otra cosa, retorno numero como ULONG y pongo aviso el warning
-	        maquinaEstados[Estado.D_U_2][Input.OTRO] = new AristaEstado(Estado.FINAL,generaTokenULONG,sufijoInvalido);
+	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL,generaTokenULONG,sufijoInvalido);
 
 	        //EOF. Crea un UINT pero genera un warning por falta de sufijo.
-	        maquinaEstados[Estado.D_U_2][Input.EOF] = new AristaEstado(Estado.FINAL, generaTokenULONG, sufijoInvalido);
+	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG, sufijoInvalido);
 
 	        // Estado 17
-			inicTransiciones(Estado.D_U_6, Estado.FINAL, retrocedeFuente, generaTokenULONG, sufijoInvalido);
+			inicTransiciones(Contenedor_Estados.D_U_6, Contenedor_Estados.FINAL, retrocedeFuente, generaTokenULONG, sufijoInvalido);
 
-			maquinaEstados[Estado.D_U_6][Input.OTRO] = new AristaEstado(Estado.FINAL, generaTokenULONG, sufijoInvalido);
-			maquinaEstados[Estado.D_U_6][Input.EOF] = new AristaEstado(Estado.FINAL, generaTokenULONG, sufijoInvalido);
+			maquinaEstados[Contenedor_Estados.D_U_6][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG, sufijoInvalido);
+			maquinaEstados[Contenedor_Estados.D_U_6][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG, sufijoInvalido);
 
 
 			// Estado 14
-			inicTransiciones(Estado.D_U_6, Estado.FINAL, retrocedeFuente, generaTokenDouble,sufijoInvalido);
-			maquinaEstados[Estado.D_U_3][Input.DIGITO] = new AristaEstado(Estado.D_U_3,concatenaChar);
-			maquinaEstados[Estado.D_U_3][Input.E_EXP] = new AristaEstado(Estado.D_U_4);// no se si le interesa o no
-			maquinaEstados[Estado.D_U_3][Input.DIGITO] = new AristaEstado(Estado.D_U_3,concatenaChar);
-			maquinaEstados[Estado.D_U_3][Input.EOF] = new AristaEstado(Estado.FINAL, generaTokenDouble,sinExponente);
-			maquinaEstados[Estado.D_U_3][Input.OTRO] = new AristaEstado(Estado.FINAL,retrocedeFuente,generaTokenDouble,sinExponente);
+			inicTransiciones(Contenedor_Estados.D_U_6, Contenedor_Estados.FINAL, retrocedeFuente, generaTokenDouble,sufijoInvalido);
+			maquinaEstados[Contenedor_Estados.D_U_3][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_3,concatenaChar);
+			maquinaEstados[Contenedor_Estados.D_U_3][Contenedor_Inputs.E_EXP] = new AristaEstado(Contenedor_Estados.D_U_4);// no se si le interesa o no
+			maquinaEstados[Contenedor_Estados.D_U_3][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_3,concatenaChar);
+			maquinaEstados[Contenedor_Estados.D_U_3][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenDouble,sinExponente);
+			maquinaEstados[Contenedor_Estados.D_U_3][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL,retrocedeFuente,generaTokenDouble,sinExponente);
 
 
 
 			// Estado 15
-			inicTransiciones(Estado.D_U_4, Estado.FINAL, retrocedeFuente, generaTokenDouble, sufijoInvalido);
+			inicTransiciones(Contenedor_Estados.D_U_4, Contenedor_Estados.FINAL, retrocedeFuente, generaTokenDouble, sufijoInvalido);
 
-			maquinaEstados[Estado.D_U_4][Input.DIGITO] = new AristaEstado(Estado.D_U_4,concatenaChar);
-			maquinaEstados[Estado.D_U_4][Input.SUMA] = new AristaEstado(Estado.D_U_5,concatenaChar);
-			maquinaEstados[Estado.D_U_4][Input.GUION] = new AristaEstado(Estado.D_U_5,concatenaChar);
-			maquinaEstados[Estado.D_U_4][Input.OTRO] = new AristaEstado(Estado.FINAL,retrocedeFuente,generaTokenDouble);
-			maquinaEstados[Estado.D_U_4][Input.EOF] = new AristaEstado(Estado.FINAL, generaTokenDouble,sinExponente);
+			maquinaEstados[Contenedor_Estados.D_U_4][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_4,concatenaChar);
+			maquinaEstados[Contenedor_Estados.D_U_4][Contenedor_Inputs.SUMA] = new AristaEstado(Contenedor_Estados.D_U_5,concatenaChar);
+			maquinaEstados[Contenedor_Estados.D_U_4][Contenedor_Inputs.GUION] = new AristaEstado(Contenedor_Estados.D_U_5,concatenaChar);
+			maquinaEstados[Contenedor_Estados.D_U_4][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL,retrocedeFuente,generaTokenDouble);
+			maquinaEstados[Contenedor_Estados.D_U_4][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenDouble,sinExponente);
 
 			// Estado 16
-			inicTransiciones(Estado.D_U_5, Estado.FINAL,parseBaseDouble, retrocedeFuente, generaTokenDouble);
-			maquinaEstados[Estado.D_U_5][Input.DIGITO] = new AristaEstado(Estado.D_U_5,concatenaChar);
-			maquinaEstados[Estado.D_U_5][Input.OTRO] = new AristaEstado(Estado.FINAL, generaTokenDouble,retrocedeFuente, sinExponente);
+			inicTransiciones(Contenedor_Estados.D_U_5, Contenedor_Estados.FINAL,parseBaseDouble, retrocedeFuente, generaTokenDouble);
+			maquinaEstados[Contenedor_Estados.D_U_5][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_5,concatenaChar);
+			maquinaEstados[Contenedor_Estados.D_U_5][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenDouble,retrocedeFuente, sinExponente);
 
 	    }
 
@@ -335,37 +333,37 @@ public class MaquinaEstados {
 	    private void inicCaminoCadenas(CodigoFuente cFuente, AccionSemantica inicStringVacio, AccionSemantica concatenaChar,
 	                                   AccionSemantica generaTokenCadena) {
 	        // Estado 0
-	        maquinaEstados[Estado.INICIAL][Input.PORCENTAJE] = new AristaEstado(Estado.UNALINEA, inicStringVacio,
+	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.PORCENTAJE] = new AristaEstado(Contenedor_Estados.UNALINEA, inicStringVacio,
 	            concatenaChar);
 
 	        // Estado 11
-			maquinaEstados[Estado.UNALINEA][Input.OTRO] = new AristaEstado(Estado.UNALINEA,
+			maquinaEstados[Contenedor_Estados.UNALINEA][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.UNALINEA,
 					concatenaChar);
 			ChequeoSLinea salta = new ChequeoSLinea(this,cFuente);
 			NotError saltoInvalido = new NotError("En esta seccion del codigo no se puede realizar un salto",aLexico,cFuente,false);
-			maquinaEstados[Estado.UNALINEA][Input.PORCENTAJE] = new AristaEstado(Estado.FINAL,generaTokenCadena,saltoInvalido,cuentaSaltoLinea);
+			maquinaEstados[Contenedor_Estados.UNALINEA][Contenedor_Inputs.PORCENTAJE] = new AristaEstado(Contenedor_Estados.FINAL,generaTokenCadena,saltoInvalido,cuentaSaltoLinea);
 
 	        //finaliza la cadena con porcentaje
-	        maquinaEstados[Estado.UNALINEA][Input.PORCENTAJE] = new AristaEstado(Estado.FINAL, concatenaChar,generaTokenCadena);
+	        maquinaEstados[Contenedor_Estados.UNALINEA][Contenedor_Inputs.PORCENTAJE] = new AristaEstado(Contenedor_Estados.FINAL, concatenaChar,generaTokenCadena);
 	        //Hay un salto de linea.
 	        //EOF. Queda la cadena abierta, por lo que hay que notificar un error.
 	        NotError errorCadenaAbierta = new NotError("Se llego al EOF y la cadena quedo abierta", aLexico,
 	            cFuente, false);
-	        maquinaEstados[Estado.UNALINEA][Input.EOF] = new AristaEstado(Estado.FINAL, errorCadenaAbierta);
+	        maquinaEstados[Contenedor_Estados.UNALINEA][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, errorCadenaAbierta);
 	    }
 
 		private void inicCaminoOr(CodigoFuente cfuente,AccionSemantica consumeChar,Retrocede_Fuente retrocedeFuente,GeneraTokenLiteral generatokenliteral){
 
 			//Estado 0
-			maquinaEstados[Estado.INICIAL][Input.OR] = new AristaEstado(Estado.OR);
+			maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.OR] = new AristaEstado(Contenedor_Estados.OR);
 
 
 			// Estado 9
 			// si viene una sola aviso con un Warning pero lo tomo como un or
 			NotError error = new NotError("error en la palabra Or, tiene un solo |",aLexico,cfuente,true);
-			inicTransiciones(Estado.OR, Estado.FINAL,retrocedeFuente,error);
+			inicTransiciones(Contenedor_Estados.OR, Contenedor_Estados.FINAL,retrocedeFuente,error);
 
-			maquinaEstados[Estado.OR][Input.OR] = new AristaEstado(Estado.FINAL,generatokenliteral,consumeChar);
+			maquinaEstados[Contenedor_Estados.OR][Contenedor_Inputs.OR] = new AristaEstado(Contenedor_Estados.FINAL,generatokenliteral,consumeChar);
 
 
 
@@ -375,27 +373,27 @@ public class MaquinaEstados {
 
 
 		//Estado 0
-		maquinaEstados[Estado.INICIAL][Input.AND] = new AristaEstado(Estado.AND);
+		maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.AND] = new AristaEstado(Contenedor_Estados.AND);
 
 
 		// Estado 8
 
 		NotError error = new NotError("error en la palabra And, tiene un solo &",aLexico,cfuente,true);
-		inicTransiciones(Estado.AND, Estado.FINAL,retrocedeFuente,error);
+		inicTransiciones(Contenedor_Estados.AND, Contenedor_Estados.FINAL,retrocedeFuente,error);
 
-		maquinaEstados[Estado.OR][Input.OR] = new AristaEstado(Estado.FINAL,generatokenp,consumeChar);
+		maquinaEstados[Contenedor_Estados.OR][Contenedor_Inputs.OR] = new AristaEstado(Contenedor_Estados.FINAL,generatokenp,consumeChar);
 	}
 
 	private void inicCaminoop(CodigoFuente cfuente, AccionSemantica consumeChar,Retrocede_Fuente retrocedeFuente,GeneraTokenLiteral generatoken){
 
 		//Estado 0
-		   maquinaEstados[Estado.INICIAL][Input.DOSP] = new AristaEstado(Estado.ASIGNACION);
+		   maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.DOSP] = new AristaEstado(Contenedor_Estados.ASIGNACION);
 
 
 		   //Estado 10
 			NotError error = new NotError("error en la asginacion, ",aLexico,cfuente,true);
-			inicTransiciones(Estado.AND, Estado.FINAL,retrocedeFuente,error);
-			maquinaEstados[Estado.ASIGNACION][Input.IGUAL] = new AristaEstado(Estado.FINAL,consumeChar,generatoken);
+			inicTransiciones(Contenedor_Estados.AND, Contenedor_Estados.FINAL,retrocedeFuente,error);
+			maquinaEstados[Contenedor_Estados.ASIGNACION][Contenedor_Inputs.IGUAL] = new AristaEstado(Contenedor_Estados.FINAL,consumeChar,generatoken);
 
 
 	}
