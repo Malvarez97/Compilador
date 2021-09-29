@@ -22,7 +22,7 @@ public class MaquinaEstados {
 	    }
 	    private void inicMaquinaEstados(CodigoFuente cFuente, TablaSimbolos tablaS, TablaPalabrasReserv tablaPR) { /// Inicializo Acciones semanticas
 
-
+			/** AS0*/
 			GeneraULONG generatokenUl= new GeneraULONG (this, tablaS, (short)262 /*Parser.CTE_UINT*/);
 			GeneraDouble generaDouble = new GeneraDouble(this, tablaS, (short)263 /*Parser.CTE_DOUBLE*/);
 			NotError notificaELexico = new NotError("Simbolo no reconocido", aLexico, cFuente, true);
@@ -103,6 +103,7 @@ public class MaquinaEstados {
 
 	// inicializo las transiciones asociadas de los identificadores
 	    private void inicCaminoLiterales(CodigoFuente cFuente) {
+			// inicializa el resto ..
 	        GeneraTokenLiteral generaTokenL= new GeneraTokenLiteral(this, cFuente);
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.SUMA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.GUION] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenL);

@@ -6,6 +6,20 @@ import java.util.Map;
 public class AlmacenToken {
     private static Map<Short,String > tokens= new HashMap<>();
 
+
+
+    public void inicializarTokens(){
+        tokens.clear();
+        tokens.add(aLexico.T_EOF,"EOF");
+        tokens.add((short) '<',"<");
+        tokens.add((short) '>',">");
+        tokens.add((short) '=',"=");
+        tokens.add(Parser.COMP_MENOR_IGUAL,"<=");
+        tokens.add(Parser.COMP_MAYOR_IGUAL,">=");
+        tokens.add(Parser.COMP_DISTINTO,"!=");
+        tokens.add(Parser.COMP_IGUAL,"==");
+    }
+
     public void clear (){
         tokens.clear();
     }
