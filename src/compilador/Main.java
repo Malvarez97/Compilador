@@ -1,9 +1,17 @@
 package compilador;
 
+import compilador.simbolo.TablaSimbolos;
+import compilador.util.*;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+			Compilador compilador=new Compilador();
+			compilador.ejecutar("a");
+
+
+
+
 
 	}
 

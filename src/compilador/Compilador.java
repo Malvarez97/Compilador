@@ -1,15 +1,73 @@
 package compilador;
 
 
-import compilador.TablaSimbolos.TablaSimbolos;
-import compilador.util.ManejadorArchivo;
+import compilador.simbolo.TablaSimbolos;
+import compilador.util.CodigoFuente;
+
+import compilador.util.*;
 
 public class Compilador {
-    private static TablaSimbolos ts = new TablaSimbolos();
+    private static  final TablaSimbolos tabla =new TablaSimbolos();
+    // Inicializo reservadas
+    private static void inicPalabrasReseradas() {
+        TablaPalabrasReserv.clear();
+        TablaPalabrasReserv.agregar("IF", (short) 257/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("THEN", (short) 258/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("ELSE", (short) 259/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("ENDIF", (short) 260/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("PRINT", (short) 261/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("FUNC", (short) 262/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("RETURN", (short) 263/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("BEGIN", (short) 264/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("BREAK", (short) 265/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("ULONG", (short) 266/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("POST", (short) 267/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("TRY", (short) 268/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("CATCH", (short) 269/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("ASGINACION", (short) 270/*Parser.UINT*/);
+    }
+    // Inicializo Tokens
 
-    public static void compilar(String nombrearchivo){
-        if (!ManejadorArchivo.existeArchivo(nombrearchivo)){ System.out.println("el archivo no existe");}
+    private static void inicTokens (){
+        AlmacenToken.clear();
+        AlmacenToken.add(AnalizadorLex.T_EOF,"EOF");
+        AlmacenToken.add((short) '<',"<");
+        AlmacenToken.add((short) '>',">");
+        AlmacenToken.add((short) '=',"=");
+        AlmacenToken.add(/*Parser.COMP_MENOR_IGUAL*/(short)271,"<=");
+        AlmacenToken.add(/*Parser.COMP_MAYOR_IGUAL*/(short)272,">=");
+        AlmacenToken.add(/*Parser.COMP_DISTINTO*/(short)273,"<>");
+        AlmacenToken.add(/*Parser.COMP_IGUAL*/(short)274,"==");
 
+    }
+    public void imprimirFinal(){
+        System.out.println();
+        System.out.println("------------------------------------------------------");
+        System.out.println("Tabla de Simbolos");
+        System.out.print(tabla.toString());
+        System.out.println("------------------------------------------------------");
+        System.out.println(Notificacion.getErrores()+ "Errores de la compilacion");
+        System.out.println("------------------------------------------------------");
+        System.out.println(Notificacion.getWarnings()+"Warnings");
+        System.out.println("----------------------------------------------------");
+
+    }
+    public void ejecutar(String patshSrc){
+        TablaSimbolos ts  = new TablaSimbolos();
+        // empieza a compilar
+        if(ManejadorArchivo.existeArchivo(patshSrc)){
+            // existe el archivo pruebo
+            inicTokens();
+            inicPalabrasReseradas();
+            CodigoFuente codigo = new CodigoFuente(ManejadorArchivo.getfuente(patshSrc));
+            AnalizadorLex lexico = new AnalizadorLex(codigo,ts);
+            imprimirFinal();
 
         }
+        System.out.println("no existe el archivo"+patshSrc);
+
+
+
+
+    }
 }
