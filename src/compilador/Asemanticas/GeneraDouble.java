@@ -1,8 +1,7 @@
 package compilador.Asemanticas;
 
-import compilador.AnalizadorLex;
 import compilador.MaquinaEstados.MaquinaEstados;
-import compilador.SIMBOLOS.TablaSimbolos;
+import compilador.TablaSimbolos.TablaSimbolos;
 import compilador.util.Notificacion;
 // esta clase verifica los exponenetes y ademas si se encuentra en el rango correcto
 
@@ -17,7 +16,7 @@ public class GeneraDouble extends AccionSemantica{
     private TablaSimbolos ts;
     private short token ;
 
-    public GeneraDouble(MaquinaEstados maquina, TablaSimbolos ts,short token){
+    public GeneraDouble(MaquinaEstados maquina,TablaSimbolos ts, short token){
         this.maquina=maquina;
         this.ts=ts;
         this.token=token;

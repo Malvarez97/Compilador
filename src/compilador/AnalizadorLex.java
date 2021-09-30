@@ -2,7 +2,7 @@ package compilador;
 
 
 import compilador.MaquinaEstados.MaquinaEstados;
-import compilador.SIMBOLOS.TablaSimbolos;
+import compilador.TablaSimbolos.TablaSimbolos;
 import compilador.util.CodigoFuente;
 import compilador.util.TablaPalabrasReserv;
 

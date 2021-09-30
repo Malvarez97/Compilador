@@ -1,6 +1,7 @@
 package compilador;
 
-import compilador.SIMBOLOS.TablaSimbolos;
+
+import compilador.TablaSimbolos.TablaSimbolos;
 import compilador.util.ManejadorArchivo;
 
 public class Compilador {

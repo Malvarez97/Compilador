@@ -3,7 +3,7 @@ package compilador.MaquinaEstados;
 
 import compilador.*;
 import compilador.Asemanticas.*;
-import compilador.SIMBOLOS.TablaSimbolos;
+import compilador.TablaSimbolos.TablaSimbolos;
 import compilador.util.CodigoFuente;
 import compilador.util.TablaPalabrasReserv;
 
@@ -22,20 +22,37 @@ public class MaquinaEstados {
 	    }
 	    private void inicMaquinaEstados(CodigoFuente cFuente, TablaSimbolos tablaS, TablaPalabrasReserv tablaPR) { /// Inicializo Acciones semanticas
 
-			/** AS0*/
-			GeneraULONG generatokenUl= new GeneraULONG (this, tablaS, (short)262 /*Parser.CTE_UINT*/);
+			/** AS0  Inic String vacio*/
+			InicStringVacio inicStringVacio = new InicStringVacio();
+			/** AS1 ConcChar*/
+			ConcChar concatenaChar = new ConcChar(cFuente);
+			/** As2 TruncId */
+			TruncId truncaId = new TruncId(aLexico);
+			/** As3 Retrocede Fuente */
+			Retrocede_Fuente retrocedeFuente = new Retrocede_Fuente(cFuente);
+			/** As4 GeneraTs */
+			GeneraTokenTSimbolos generaTokenId = new GeneraTokenTSimbolos(this, tablaS, (short) 257/*Parser.ID*/);
+			/**  As5 GeneraPr */
+			GeneraTPr generaTokenPR = new GeneraTPr(this);
+			/**  As6 GeneraTp -> inicializada en cada estado */
+			GeneraTokenLiteral tokenLiteral = new GeneraTokenLiteral(this, cFuente);
+
+			/**  As7 IgnoraC*/
+			IgnoraC consumeChar = new IgnoraC();
+
+			/**  As8 GeneraUL*/
+			GeneraULONG generatokenUl = new GeneraULONG(this, tablaS, (short) 262 /*Parser.CTE_UINT*/);
+			/**  As9 ParseDouble :-> */
+
+			/**  As10 GeneraToukenDouble */
 			GeneraDouble generaDouble = new GeneraDouble(this, tablaS, (short)263 /*Parser.CTE_DOUBLE*/);
+			/**  As11 incrementa salto*/
+
+			/** Inicializacion de errores generica y errores part */
 			NotError notificaELexico = new NotError("Simbolo no reconocido", aLexico, cFuente, true);
 			GeneraTokenParticular generarEOF = new GeneraTokenParticular(this, AnalizadorLex.T_EOF);
-			GeneraTokenTSimbolos generaTokenId = new GeneraTokenTSimbolos(this, tablaS, (short) 257/*Parser.ID*/);
 	        GeneraTokenTSimbolos generaTokenCadena = new GeneraTokenTSimbolos(this, tablaS,(short)264 /*Parser.CADENA*/);
-	        GeneraTPr generaTokenPR = new GeneraTPr(this);
-	        IgnoraC consumeChar = new IgnoraC();
-			InicStringVacio inicStringVacio = new InicStringVacio();
-			ConcChar concatenaChar = new ConcChar(cFuente);
-			TruncId truncaId = new TruncId(aLexico);
-			Retrocede_Fuente retrocedeFuente = new Retrocede_Fuente(cFuente);
-			GeneraTokenLiteral tokenLiteral =new GeneraTokenLiteral(this,cFuente);
+
 
 
 	        //  Inicializacion de estados y transiciones

@@ -19,8 +19,11 @@ public class TablaPalabrasReserv {
         palabrasReserv.put("END",(short)8);
         palabrasReserv.put("BREAK",(short)9);
         palabrasReserv.put("DOUBLE",(short)10);
-        palabrasReserv.put("REPEAT",(short)11);
-
+        palabrasReserv.put("ULONG",(short)11);
+        palabrasReserv.put("POST",(short)12);
+        palabrasReserv.put("TRY",(short)13);
+        palabrasReserv.put("CATCH",(short)14);
+        palabrasReserv.put("ASIGNACION",(short)15);
     }
 
     public static boolean esReservada(String palabra) {

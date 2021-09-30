@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e04bfcb4-4100-438b-891d-719aa088eaa8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/compilador/TablaSimbolos/Casilla.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/compilador/TablaSimbolos/TablaSimbolos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTokenTSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraTokenTSimbolos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraULONG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/GeneraULONG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Asemanticas/NotWarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Asemanticas/NotWarning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Compilador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/MaquinaEstados/MaquinaEstados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/MaquinaEstados/MaquinaEstados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/util/TablaPalabrasReserv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/util/TablaPalabrasReserv.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

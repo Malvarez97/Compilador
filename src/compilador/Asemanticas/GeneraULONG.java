@@ -1,8 +1,7 @@
 package compilador.Asemanticas;
 
-import compilador.AnalizadorLex;
 import compilador.MaquinaEstados.MaquinaEstados;
-import compilador.SIMBOLOS.TablaSimbolos;
+import compilador.TablaSimbolos.TablaSimbolos;
 import compilador.util.Notificacion;
 
 public class GeneraULONG extends AccionSemantica{
