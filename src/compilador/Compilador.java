@@ -6,6 +6,9 @@ import compilador.util.CodigoFuente;
 
 import compilador.util.*;
 
+import java.io.File;
+import java.net.URL;
+
 public class Compilador {
     private static  final TablaSimbolos tabla =new TablaSimbolos();
     // Inicializo reservadas
@@ -25,6 +28,7 @@ public class Compilador {
         TablaPalabrasReserv.agregar("TRY", (short) 268/*Parser.UINT*/);
         TablaPalabrasReserv.agregar("CATCH", (short) 269/*Parser.UINT*/);
         TablaPalabrasReserv.agregar("ASGINACION", (short) 270/*Parser.UINT*/);
+        System.out.println("Palabras reservadas bien inicizalizadas..");
     }
     // Inicializo Tokens
 
@@ -38,6 +42,7 @@ public class Compilador {
         AlmacenToken.add(/*Parser.COMP_MAYOR_IGUAL*/(short)272,">=");
         AlmacenToken.add(/*Parser.COMP_DISTINTO*/(short)273,"<>");
         AlmacenToken.add(/*Parser.COMP_IGUAL*/(short)274,"==");
+        System.out.println("Tokens bien inicializados ");
 
     }
     public void imprimirFinal(){
