@@ -243,7 +243,7 @@ public class MaquinaEstados {
 
 
 			// Estado 6
-			GeneraTokenParticular generaTokenPR = new GeneraTokenParticular(this,(short) '>') ;
+			GeneraTokenParticular generaTokenPR = new GeneraTokenParticular(this,(short) '>') ;/** aca hay que poner la variable que se quiera de ese simbolo*/
 			inicTransiciones(Contenedor_Estados.COMPYMAYOR, Contenedor_Estados.FINAL,retrocedeFuente,generaTokenPR);
 
 			maquinaEstados[Contenedor_Estados.COMPYMAYOR][Contenedor_Inputs.IGUAL] = new AristaEstado(Contenedor_Estados.FINAL,consumeChar);
@@ -252,8 +252,8 @@ public class MaquinaEstados {
 
 
 			//Estado 7
-			GeneraTokenParticular token = new GeneraTokenParticular(this,(short)'<');
-			inicTransiciones(Contenedor_Estados.DISTYMENOR, Contenedor_Estados.FINAL, retrocedeFuente, retrocedeFuente,token);
+			GeneraTokenParticular token = new GeneraTokenParticular(this,(short)'<'); /** aca hay que poner la variable que se quiera de ese simbolo*/
+			inicTransiciones(Contenedor_Estados.DISTYMENOR, Contenedor_Estados.FINAL, retrocedeFuente,token);
 
 			maquinaEstados[Contenedor_Estados.DISTYMENOR][Contenedor_Inputs.IGUAL] = new AristaEstado(Contenedor_Estados.FINAL, consumeChar);
 			maquinaEstados[Contenedor_Estados.DISTYMENOR][Contenedor_Inputs.MAYOR] = new AristaEstado(Contenedor_Estados.FINAL, consumeChar);

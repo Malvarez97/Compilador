@@ -3,40 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e04bfcb4-4100-438b-891d-719aa088eaa8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/Compilador.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/Compilador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/AccionSemantica.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/AccionSemantica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/ConcChar.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/ConcChar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/CuentaSaltoLinea.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/CuentaSaltoLinea.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraDouble.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraDouble.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTPr.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTPr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTokenLiteral.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTokenLiteral.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTokenParticular.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTokenParticular.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTokenTSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTokenTSimbolos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraULONG.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraULONG.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/IgnoraC.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/IgnoraC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/InicStringVacio.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/InicStringVacio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/ParseBaseDouble.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/ParseBaseDouble.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/Retrocede_Fuente.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/Retrocede_Fuente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/TruncId.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/TruncId.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/compilador/ejemplo1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/ejemplo1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/compilador/maquina_estado/MaquinaEstados.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/maquina_estado/MaquinaEstados.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Compilador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/AccionSemantica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/AccionSemantica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/ConcChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/ConcChar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/CuentaSaltoLinea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/CuentaSaltoLinea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTPr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTPr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenLiteral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenParticular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenParticular.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenTSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenTSimbolos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraULONG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraULONG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/IgnoraC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/IgnoraC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/InicStringVacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/InicStringVacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/ParseBaseDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/ParseBaseDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/Retrocede_Fuente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/Retrocede_Fuente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/TruncId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/TruncId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/ejemplo1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/ejemplo1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/maquina_estado/MaquinaEstados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/maquina_estado/MaquinaEstados.java" afterDir="false" />
     </list>
