@@ -4,7 +4,7 @@ public class ParseBaseDouble  extends AccionSemantica{
 
 
 	public void ejecutar() {
-        System.out.println("trata de parsear double");
+        System.out.println(ANSI_BLUE+"trata de parsear double"+ANSI_RESET);
         String doub = getString();
         if (doub.equals(".")) setBaseDouble(0);
         else setBaseDouble(Double.parseDouble(doub));

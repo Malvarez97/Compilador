@@ -41,6 +41,7 @@ public class AnalizadorLex {
 	                cod_Fuente.adelanta();
 	            }
 	        }
+			System.out.println(ultimoTokenGenerado);
 	        maquinaEstados.reiniciar();
 	        return ultimoTokenGenerado;
 	    }

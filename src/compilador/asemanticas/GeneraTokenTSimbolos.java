@@ -23,7 +23,7 @@ public class GeneraTokenTSimbolos extends AccionSemantica{
 
     @Override
     public void ejecutar() {
-        System.out.println("genero token simbolos");
+        System.out.println(ANSI_BLUE+"genero token simbolos"+ANSI_RESET);
         String lexema =getString();
         ts.agregarEntrada(token,lexema,"");
         ts.setUsoEntrada(lexema,"-");

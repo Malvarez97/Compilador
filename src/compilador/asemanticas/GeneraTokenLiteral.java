@@ -15,8 +15,8 @@ public class GeneraTokenLiteral extends AccionSemantica{
 
     @Override
     public void ejecutar() {
-        System.out.println("genero Tokenl lit");
-        int token = cFuente.simActual(); //Conversion implicita de char a ASCII.
+        System.out.println(ANSI_BLUE+"genero Tokenl lit"+ANSI_RESET);
+        int token = cFuente.simActual();
         maquina.setVariablesSintactico((short) token, ""); //No tiene lexema.
     }
 

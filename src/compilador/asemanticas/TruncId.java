@@ -13,7 +13,7 @@ public class TruncId  extends AccionSemantica {
 	}
 	
 	public void ejecutar() {
-		System.out.println("trunco id");
+		System.out.println(ANSI_BLUE+"trunco id"+ANSI_RESET);
 		if(maxString < tamString()) {
 			truncaString(maxString);
 			Notificacion.addWarnings(lexico.getLineaActual(),null );

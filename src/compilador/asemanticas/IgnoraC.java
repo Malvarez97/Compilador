@@ -8,7 +8,7 @@ public class IgnoraC extends AccionSemantica{
 
     @Override
     public void ejecutar() {
-        System.out.println("ignoroChar");
+        System.out.println(ANSI_BLUE+"ignoroChar"+ANSI_RESET);
         return ;
     }
 }

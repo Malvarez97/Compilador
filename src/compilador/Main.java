@@ -11,11 +11,6 @@ public class Main {
 			String ubicacion =file.getPath();
 			compilador.ejecutar(ubicacion);
 
-
-
-
-
-
 	}
 
 }

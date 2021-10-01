@@ -9,7 +9,7 @@ public class CuentaSaltoLinea extends AccionSemantica {
     @Override
     public void ejecutar() {
         cantLineas++;
-        System.out.println("ejecuto cuenta linea");
+        System.out.println(ANSI_BLUE+"ejecuto cuenta linea"+ANSI_RESET);
     }
 
     public int getCantLineas() {

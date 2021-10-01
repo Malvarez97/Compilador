@@ -9,6 +9,9 @@ import compilador.util.CodigoFuente;
 import compilador.util.TablaPalabrasReserv;
 
 public class MaquinaEstados {
+		public static final String ANSI_RESET = "\u001B[0m";
+		public static final String ANSI_GREEN = "\u001B[32m";
+
 		private final AristaEstado[][] maquinaEstados = new AristaEstado[Contenedor_Estados.TOTAL_ESTADOS][Contenedor_Inputs.TOTAL_INPUTS]; //[filas][columnas].
 	    private final AnalizadorLex aLexico; //Permite agregar tokens a medida que se generan.
 	    private final CuentaSaltoLinea cuentaSaltoLinea = new CuentaSaltoLinea(); //Permite saber la linea actual
@@ -97,13 +100,12 @@ public class MaquinaEstados {
 
 	    public void cambiar(char input) { // simula las transiciones de estados
 	        int codigoInput = Contenedor_Inputs.charToInt(input);
-			System.out.println("codigo leido "+input );
+			System.out.println(ANSI_GREEN+"codigo leido "+input+ANSI_RESET );
 
 			AristaEstado AristaEstado = maquinaEstados[estadoActual][codigoInput];
 			System.out.print(estadoActual);
 	        estadoActual = AristaEstado.getSigEstado();
 			System.out.println("-->"+estadoActual);
-
 	        AristaEstado.ejecutar();
 	    }
 
@@ -169,6 +171,9 @@ public class MaquinaEstados {
 	        // Estado 0
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.LETRA_MAYUS] = new AristaEstado(Contenedor_Estados.DETECCION_PR, inicStringVacio,
 	            concatenaChar);
+			maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.E_EXP] = new AristaEstado(Contenedor_Estados.DETECCION_PR, inicStringVacio,
+					concatenaChar);
+
 
 	        // Estado 2
 			// Entradas que no fueron reconocidas
@@ -181,6 +186,7 @@ public class MaquinaEstados {
   			//Letras mayusculas.
 	        maquinaEstados[Contenedor_Estados.DETECCION_PR][Contenedor_Inputs.LETRA_MAYUS] = new AristaEstado(Contenedor_Estados.DETECCION_PR,
 	            concatenaChar);
+
 			// borre las palabras reservadas por que no hay con _(ACORDARME)
 
 			//EOF. Voy directo al estado final. No hace falta devolver ultimo leido.

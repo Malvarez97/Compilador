@@ -14,7 +14,7 @@ public class ConcChar extends AccionSemantica {
 	@Override
 	
 	public void ejecutar() {
-		System.out.println("ejecuto cChar");
+		System.out.println(ANSI_BLUE+"ejecuto cChar"+ANSI_RESET);
 		concatenaChar(codigo.simActual());
 	}
 

@@ -6,10 +6,14 @@ import compilador.util.CodigoFuente;
 
 import compilador.util.*;
 
+
 import java.io.File;
 import java.net.URL;
 
 public class Compilador {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
     private static  final TablaSimbolos tabla =new TablaSimbolos();
     // Inicializo reservadas
     private static void inicPalabrasReseradas() {
@@ -75,8 +79,7 @@ public class Compilador {
     }
     private void consumidor(AnalizadorLex lexico){
         while (lexico.tokengenerado()!=0) {
-                System.out.println("entro a");
-               System.out.println(lexico.tokengenerado());
+               System.out.println(ANSI_RED+ lexico.tokengenerado()+ANSI_RESET);
                 }
     }
 }
