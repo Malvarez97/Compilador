@@ -17,6 +17,7 @@ public class GeneraULONG extends AccionSemantica{
 
     @Override
     public void ejecutar() {
+        System.out.println("genero ulong ");
         int numero = Integer.parseInt(this.getString());
         if ((numero >= 0) && (numero <= (int) (Math.pow(2, 32) - 1))) { // Rango Ulong
             ts.agregarEntrada(token, getString(), "ULONG");

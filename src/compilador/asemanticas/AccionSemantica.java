@@ -40,7 +40,7 @@ public abstract class AccionSemantica {
 	public void setBaseDouble(double valor) {
 		base=valor;
 	}
-	public boolean baseInicializada(){return base!= Double.parseDouble(null);}// revisar
+	public boolean baseInicializada(){return base!= Double.NEGATIVE_INFINITY;}// revisar
 	
 	public abstract void ejecutar();
 }

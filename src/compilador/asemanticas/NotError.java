@@ -21,7 +21,7 @@ public class NotError extends AccionSemantica{
     public void ejecutar() {
      String error ="";
      if(irreconocible){
-         error += "El Simbolo "+irreconocible+"  no fue reconocido";
+         error += "El Simbolo "+ irreconocible+"  no fue reconocido";
      }
      else error+=mensaje;
 

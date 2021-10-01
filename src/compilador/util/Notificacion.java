@@ -15,7 +15,7 @@ public  class Notificacion {
 
 
     public static void addError(int linea, String error) {
-        errores.add("linea "+linea+"->"+error);
+        errores.add("linea   "+linea+"  ->  "+error);
     }
 
 
@@ -49,7 +49,7 @@ public  class Notificacion {
     }
 
     public static void addWarnings(int linea, String war) {
-        warnings.add("linea"+linea+"->"+"war");
+        warnings.add("en la linea "+linea+"-> hay un Warning"+war);
     }
 
 

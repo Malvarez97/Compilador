@@ -97,10 +97,12 @@ public class MaquinaEstados {
 
 	    public void cambiar(char input) { // simula las transiciones de estados
 	        int codigoInput = Contenedor_Inputs.charToInt(input);
+			System.out.println("codigo leido "+input );
 
 			AristaEstado AristaEstado = maquinaEstados[estadoActual][codigoInput];
-
+			System.out.print(estadoActual);
 	        estadoActual = AristaEstado.getSigEstado();
+			System.out.println("-->"+estadoActual);
 
 	        AristaEstado.ejecutar();
 	    }

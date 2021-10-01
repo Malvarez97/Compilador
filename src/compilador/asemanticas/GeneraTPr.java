@@ -15,6 +15,7 @@ public class GeneraTPr extends AccionSemantica{
 
     @Override
     public void ejecutar() {
+        System.out.println("genero Token palabra reservada");
         String palabra =getString();
         if(TablaPalabrasReserv.esReservada(palabra)){
             maquina.setVariablesSintactico(TablaPalabrasReserv.getToken(palabra),""); //

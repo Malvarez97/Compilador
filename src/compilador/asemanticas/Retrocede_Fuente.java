@@ -7,5 +7,8 @@ public class Retrocede_Fuente extends AccionSemantica{
 
     public Retrocede_Fuente(CodigoFuente codigo){this.codigo=codigo;}
     @Override
-    public void ejecutar() {codigo.retrocede();}
+    public void ejecutar() {
+        System.out.println("retrocede fuente");
+        codigo.retrocede();
+    }
 }

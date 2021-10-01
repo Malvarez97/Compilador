@@ -3,12 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="e04bfcb4-4100-438b-891d-719aa088eaa8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/compilador/ejemplo1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/ejemplo1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Compilador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/AccionSemantica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/AccionSemantica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/ConcChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/ConcChar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/CuentaSaltoLinea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/CuentaSaltoLinea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compilador/util/ManejadorArchivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/util/ManejadorArchivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTPr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTPr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenLiteral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenParticular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenParticular.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenTSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraTokenTSimbolos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraULONG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/GeneraULONG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/IgnoraC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/IgnoraC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/InicStringVacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/InicStringVacio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/NotError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/NotError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/ParseBaseDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/ParseBaseDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/Retrocede_Fuente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/Retrocede_Fuente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/TruncId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/TruncId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/ejemplo1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/ejemplo1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/maquina_estado/MaquinaEstados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/maquina_estado/MaquinaEstados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/util/Notificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/util/Notificacion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

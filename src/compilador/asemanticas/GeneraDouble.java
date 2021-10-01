@@ -23,6 +23,7 @@ public class GeneraDouble extends AccionSemantica{
     }
     @Override
     public void ejecutar() {
+        System.out.println("genero double");
         boolean valido = true;
         int exponente = 0;
         if (baseInicializada()) {// si hay una base inicializada

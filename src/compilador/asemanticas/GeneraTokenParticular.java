@@ -14,6 +14,7 @@ public class GeneraTokenParticular extends AccionSemantica{
 
     @Override
     public void ejecutar() {
+        System.out.println("genero token Particular");
        maquina.setVariablesSintactico(token, AlmacenToken.getRepresentacion(token));
 
     }

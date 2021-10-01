@@ -42,7 +42,6 @@ public class Compilador {
         AlmacenToken.add(/*Parser.COMP_MAYOR_IGUAL*/(short)272,">=");
         AlmacenToken.add(/*Parser.COMP_DISTINTO*/(short)273,"<>");
         AlmacenToken.add(/*Parser.COMP_IGUAL*/(short)274,"==");
-        System.out.println("Tokens bien inicializados ");
 
     }
     public void imprimirFinal(){
@@ -66,14 +65,18 @@ public class Compilador {
             inicPalabrasReseradas();
             CodigoFuente codigo = new CodigoFuente(ManejadorArchivo.getfuente(patshSrc));
             AnalizadorLex lexico = new AnalizadorLex(codigo,ts);
+            consumidor(lexico);
             imprimirFinal();
 
         }
         else {
-            System.out.println("no existe el archivo" + patshSrc);
+            System.out.println("no existe el archivo :   " + patshSrc);
         }
-
-
-
+    }
+    private void consumidor(AnalizadorLex lexico){
+        while (lexico.tokengenerado()!=0) {
+                System.out.println("entro a");
+               System.out.println(lexico.tokengenerado());
+                }
     }
 }
