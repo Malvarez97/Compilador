@@ -69,8 +69,9 @@ public class Compilador {
             imprimirFinal();
 
         }
-        System.out.println("no existe el archivo"+patshSrc);
-
+        else {
+            System.out.println("no existe el archivo" + patshSrc);
+        }
 
 
 

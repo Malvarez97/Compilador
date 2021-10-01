@@ -15,7 +15,7 @@ public class AnalizadorLex {
 	
 	 public AnalizadorLex(CodigoFuente fuente, TablaSimbolos tablaS){
 	        this.cod_Fuente = fuente;
-	        this.maquinaEstados = new MaquinaEstados(this, fuente,tablaS, inicTPR());
+	        this.maquinaEstados = new MaquinaEstados(this, fuente,tablaS, iniciarTpalabrasR());
 	    }
 
 	    public void setVariablesSintactico(short token, String lexema){
@@ -27,10 +27,11 @@ public class AnalizadorLex {
 	        return maquinaEstados.getLineaActual();
 	    }
 
-	    private TablaPalabrasReserv inicTPR(){
+	    private TablaPalabrasReserv iniciarTpalabrasR(){
 
 	        return null;
 	    }
+
 
 	    public int tokengenerado(){
 	        while (!maquinaEstados.esEstadoFinal()){

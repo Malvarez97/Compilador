@@ -63,7 +63,7 @@ public class ManejadorArchivo {
     }
 
     public static boolean existeArchivo(String path){
-        File f = new File("path");
+        File f = new File(path);
         return (!f.isDirectory() && f.exists());
     }
 

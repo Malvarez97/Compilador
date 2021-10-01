@@ -2,7 +2,7 @@ package compilador.asemanticas;
 
 public abstract class AccionSemantica {
 	private static StringBuilder sTemporal= new StringBuilder("");
-	private static double base = Double.parseDouble(null); // mirar por que ...
+	private static double base = Double.NEGATIVE_INFINITY; // mirar por que ...
 	
 	
 	public void inicString() { // vacio el string en caso de que tenga basura, dejandolo vacio 

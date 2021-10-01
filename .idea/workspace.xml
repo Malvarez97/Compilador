@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e04bfcb4-4100-438b-891d-719aa088eaa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/compilador/ejemplo1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/Compilador.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/Compilador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/AnalizadorLex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Compilador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/AccionSemantica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/AccionSemantica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/CuentaSaltoLinea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/CuentaSaltoLinea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/util/ManejadorArchivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/util/ManejadorArchivo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
