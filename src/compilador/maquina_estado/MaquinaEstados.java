@@ -2,7 +2,6 @@ package compilador.maquina_estado;
 
 
 import compilador.*;
-import compilador.Acciones.ChequeoSLinea;
 import compilador.asemanticas.*;
 import compilador.simbolo.TablaSimbolos;
 import compilador.util.CodigoFuente;
@@ -60,7 +59,8 @@ public class MaquinaEstados {
 
 
 	        //  Inicializacion de estados y transiciones
-	        inicTransiciones(Contenedor_Estados.INICIAL, Contenedor_Estados.INICIAL, notificaELexico); // Error por defecto del lexico
+
+			inicTransiciones(Contenedor_Estados.INICIAL, Contenedor_Estados.INICIAL ,notificaELexico); // Error por defecto del lexico
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.DESCARTABLE] = new AristaEstado(Contenedor_Estados.INICIAL);
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.INICIAL,
 	            cuentaSaltoLinea); //Salto de linea.
@@ -141,7 +141,7 @@ public class MaquinaEstados {
 	                               AccionSemantica generaTokenId, AccionSemantica retrocedeFuente) {
 
 
-	        // Estado 0
+			// Estado 0
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.U_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, inicStringVacio, concatenaChar);
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.L_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, inicStringVacio, concatenaChar);
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.LETRA_MINUSC] = new AristaEstado(Contenedor_Estados.DETECCION_ID, inicStringVacio, concatenaChar);
@@ -186,6 +186,8 @@ public class MaquinaEstados {
   			//Letras mayusculas.
 	        maquinaEstados[Contenedor_Estados.DETECCION_PR][Contenedor_Inputs.LETRA_MAYUS] = new AristaEstado(Contenedor_Estados.DETECCION_PR,
 	            concatenaChar);
+			maquinaEstados[Contenedor_Estados.DETECCION_PR][Contenedor_Inputs.E_EXP] = new AristaEstado(Contenedor_Estados.DETECCION_PR,
+					concatenaChar);
 
 			// borre las palabras reservadas por que no hay con _(ACORDARME)
 
@@ -203,7 +205,7 @@ public class MaquinaEstados {
 	        maquinaEstados[Contenedor_Estados.INICIAL][Contenedor_Inputs.DIV] = new AristaEstado(Contenedor_Estados.COMENTARIO);//inicio transicion de comentario o division
 			
 	        // Estado 3 , posible division o comentario
-			GeneraTokenParticular token = new GeneraTokenParticular(this,(short)'/');
+			GeneraTokenParticular token = new GeneraTokenParticular(this,(short)12);
 			inicTransiciones(Contenedor_Estados.COMENTARIO, Contenedor_Estados.FINAL, retrocedeFuente,token);// si viene otra cosa genero el /
 
 			maquinaEstados[Contenedor_Estados.COMENTARIO][Contenedor_Inputs.DIV] = new AristaEstado(Contenedor_Estados.COMENTARIO2);
@@ -211,7 +213,7 @@ public class MaquinaEstados {
 
 			//Estado 4
 
-			inicTransiciones(Contenedor_Estados.COMENTARIO, Contenedor_Estados.COMENTARIO); // cuerpo del comentario, no realizo ninguna accion
+			inicTransiciones(Contenedor_Estados.COMENTARIO2, Contenedor_Estados.COMENTARIO2); // cuerpo del comentario, no realizo ninguna accion
 
 			maquinaEstados[Contenedor_Estados.COMENTARIO2][Contenedor_Inputs.DIV]= new AristaEstado(Contenedor_Estados.COMENTARIO3);// posible salida del comentario
 
@@ -283,10 +285,12 @@ public class MaquinaEstados {
 
 	        // Estado 12
 	        //Con las salidas no reconocidas el compilador lo toma como ULONG y genera un warning
-	        inicTransiciones(Contenedor_Estados.D_U_1, Contenedor_Estados.FINAL, generaTokenULONG, retrocedeFuente, faltaSufijo);
+	        inicTransiciones(Contenedor_Estados.D_U_1, Contenedor_Estados.FINAL, generaTokenDouble);
 	        //si hay un salto de linea, genero Warning por falta
 	        maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG,
 	            cuentaSaltoLinea, faltaSufijo);
+			maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG,
+					cuentaSaltoLinea, faltaSufijo);
 	        //Digitos.
 	        maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_1,
 	            concatenaChar);
@@ -296,7 +300,7 @@ public class MaquinaEstados {
 	            concatenaChar);
 
 			// U : empieza camino correcto ULONG
-			maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.U_MINUSC] = new AristaEstado(Contenedor_Estados.D_U_2);
+			maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.U_MINUSC] = new AristaEstado(Contenedor_Estados.D_U_2,consumeChar);
 
 			// OTRO
 			maquinaEstados[Contenedor_Estados.D_U_1][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL,
@@ -315,7 +319,7 @@ public class MaquinaEstados {
 	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.SALTO_LINEA] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG,
 	            cuentaSaltoLinea, sufijoInvalido);
 	        //Letra 'l' minuscula.
-	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.L_MINUSC] = new AristaEstado(Contenedor_Estados.D_U_6); // no hace nada ya que la parte ul del sufijo solo me importa para clasificar
+	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.L_MINUSC] = new AristaEstado(Contenedor_Estados.D_U_6,consumeChar); // no hace nada ya que la parte ul del sufijo solo me importa para clasificar
 
 			//Cualquier otra cosa, retorno numero como ULONG y pongo aviso el warning
 	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL,generaTokenULONG,sufijoInvalido);
@@ -324,14 +328,14 @@ public class MaquinaEstados {
 	        maquinaEstados[Contenedor_Estados.D_U_2][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG, sufijoInvalido);
 
 	        // Estado 17
-			inicTransiciones(Contenedor_Estados.D_U_6, Contenedor_Estados.FINAL, retrocedeFuente, generaTokenULONG, sufijoInvalido);
+			inicTransiciones(Contenedor_Estados.D_U_6, Contenedor_Estados.FINAL, retrocedeFuente,generaTokenULONG);
 
 			maquinaEstados[Contenedor_Estados.D_U_6][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG, sufijoInvalido);
 			maquinaEstados[Contenedor_Estados.D_U_6][Contenedor_Inputs.EOF] = new AristaEstado(Contenedor_Estados.FINAL, generaTokenULONG, sufijoInvalido);
 
 
 			// Estado 14
-			inicTransiciones(Contenedor_Estados.D_U_6, Contenedor_Estados.FINAL, retrocedeFuente, generaTokenDouble,sufijoInvalido);
+			inicTransiciones(Contenedor_Estados.D_U_3, Contenedor_Estados.FINAL, retrocedeFuente, generaTokenDouble);
 			maquinaEstados[Contenedor_Estados.D_U_3][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_3,concatenaChar);
 			maquinaEstados[Contenedor_Estados.D_U_3][Contenedor_Inputs.E_EXP] = new AristaEstado(Contenedor_Estados.D_U_4);// no se si le interesa o no
 			maquinaEstados[Contenedor_Estados.D_U_3][Contenedor_Inputs.DIGITO] = new AristaEstado(Contenedor_Estados.D_U_3,concatenaChar);
@@ -366,7 +370,6 @@ public class MaquinaEstados {
 	        // Estado 11
 			maquinaEstados[Contenedor_Estados.UNALINEA][Contenedor_Inputs.OTRO] = new AristaEstado(Contenedor_Estados.UNALINEA,
 					concatenaChar);
-			ChequeoSLinea salta = new ChequeoSLinea(this,cFuente);
 			NotError saltoInvalido = new NotError("En esta seccion del codigo no se puede realizar un salto",aLexico,cFuente,false);
 			maquinaEstados[Contenedor_Estados.UNALINEA][Contenedor_Inputs.PORCENTAJE] = new AristaEstado(Contenedor_Estados.FINAL,generaTokenCadena,saltoInvalido,cuentaSaltoLinea);
 
@@ -408,7 +411,7 @@ public class MaquinaEstados {
 		NotError error = new NotError("error en la palabra And, tiene un solo &",aLexico,cfuente,true);
 		inicTransiciones(Contenedor_Estados.AND, Contenedor_Estados.FINAL,retrocedeFuente,error);
 
-		maquinaEstados[Contenedor_Estados.OR][Contenedor_Inputs.OR] = new AristaEstado(Contenedor_Estados.FINAL,generatokenp,consumeChar);
+		maquinaEstados[Contenedor_Estados.AND][Contenedor_Inputs.AND] = new AristaEstado(Contenedor_Estados.FINAL,generatokenp,consumeChar);
 	}
 
 	private void inicCaminoop(CodigoFuente cfuente, AccionSemantica consumeChar,Retrocede_Fuente retrocedeFuente,GeneraTokenLiteral generatoken){

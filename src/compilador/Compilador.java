@@ -15,6 +15,7 @@ public class Compilador {
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
     private static  final TablaSimbolos tabla =new TablaSimbolos();
+
     // Inicializo reservadas
     private static void inicPalabrasReseradas() {
         TablaPalabrasReserv.clear();
@@ -31,7 +32,10 @@ public class Compilador {
         TablaPalabrasReserv.agregar("POST", (short) 267/*Parser.UINT*/);
         TablaPalabrasReserv.agregar("TRY", (short) 268/*Parser.UINT*/);
         TablaPalabrasReserv.agregar("CATCH", (short) 269/*Parser.UINT*/);
-        TablaPalabrasReserv.agregar("ASGINACION", (short) 270/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("ASIGNACION", (short) 270/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("END", (short) 271/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("DOUBLE", (short) 272/*Parser.UINT*/);
+        TablaPalabrasReserv.agregar("REPEAT", (short) 273/*Parser.UINT*/);
         System.out.println("Palabras reservadas bien inicizalizadas..");
     }
     // Inicializo Tokens
@@ -42,10 +46,13 @@ public class Compilador {
         AlmacenToken.add((short) '<',"<");
         AlmacenToken.add((short) '>',">");
         AlmacenToken.add((short) '=',"=");
-        AlmacenToken.add(/*Parser.COMP_MENOR_IGUAL*/(short)271,"<=");
-        AlmacenToken.add(/*Parser.COMP_MAYOR_IGUAL*/(short)272,">=");
-        AlmacenToken.add(/*Parser.COMP_DISTINTO*/(short)273,"<>");
-        AlmacenToken.add(/*Parser.COMP_IGUAL*/(short)274,"==");
+        AlmacenToken.add(/*Parser.COMP_MENOR_IGUAL*/(short)274,"<=");
+        AlmacenToken.add(/*Parser.COMP_MAYOR_IGUAL*/(short)275,">=");
+        AlmacenToken.add(/*Parser.COMP_DISTINTO*/(short)276,"<>");
+        AlmacenToken.add(/*Parser.COMP_IGUAL*/(short)277,"==");
+        AlmacenToken.add(/*Parser.COMP_IGUAL*/(short)277,"==");
+        AlmacenToken.add(/*Parser.COMP_IGUAL*/(short)277,"||");
+        AlmacenToken.add(/*Parser.COMP_IGUAL*/(short)277,"&&");
 
     }
     public void imprimirFinal(){

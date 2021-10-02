@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e04bfcb4-4100-438b-891d-719aa088eaa8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTokenTSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/GeneraTokenTSimbolos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/compilador/Acciones/ChequeoSLinea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/compilador/Compilador.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/Compilador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/compilador/asemanticas/ParseBaseDouble.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/asemanticas/ParseBaseDouble.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/compilador/ejemplo1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/ejemplo1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/compilador/maquina_estado/MaquinaEstados.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/compilador/maquina_estado/MaquinaEstados.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Acciones/ChequeoSLinea.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/Compilador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compilador/asemanticas/ParseBaseDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/asemanticas/ParseBaseDouble.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/ejemplo1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/ejemplo1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compilador/maquina_estado/MaquinaEstados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compilador/maquina_estado/MaquinaEstados.java" afterDir="false" />
     </list>
